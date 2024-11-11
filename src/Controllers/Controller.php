@@ -4,8 +4,8 @@ namespace Src\Controllers;
 
 use Src\Database\Connection;
 
-class Controller 
-{
+abstract class Controller {
+
     protected $db;
 
     public function __construct(Connection $db)
@@ -13,18 +13,20 @@ class Controller
         $this->db = $db;
     }
 
-    public function view(string $path, array $params = null)
+    protected function view(string $path, array $params = null)
     {
-        if ($path != "blog/index"){
+        if ($path !== "blog/homepage" && $path !== "blog/list_posts"){
             ob_start();
             require VIEWS . $path . '.php';
-            if ($params) {
-                $params = extract($params);
-            }
             $content = ob_get_clean();
             require VIEWS . 'layout.php';
         } else {
             require VIEWS . $path . '.php';
         }
+    }
+
+    protected function connectDB()
+    {
+        return $this->db;
     }
 }

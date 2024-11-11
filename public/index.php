@@ -5,10 +5,15 @@ require '../vendor/autoload.php';
 
 define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
 define('SCRIPTS', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR) ;
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'my-first-php-blog');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
 
 $router = new Router($_GET['url']);
 
-$router->get('/', 'Src\Controllers\BlogController@index');
-$router->get('/posts/:id', 'Src\Controllers\BlogController@show');
+$router->get('/', 'Src\Controllers\PostController@homepage');
+$router->get('/posts', 'Src\Controllers\PostController@listPosts');
+$router->get('/posts/:id', 'Src\Controllers\PostController@showPost');
 
 $router->run();
