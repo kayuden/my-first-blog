@@ -64,7 +64,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'profile.png'?>" alt="">
+                    <img class="img-responsive" src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'kb.png'?>" alt="">
                     <div class="intro-text">
                         <span class="name">Kayden Bartholomot</span>
                         <hr class="star-light">

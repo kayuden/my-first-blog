@@ -1,9 +1,17 @@
 <?php
 
-namespace App\Controllers;
+namespace Src\Controllers;
+
+use Src\Database\Connection;
 
 class Controller 
 {
+    protected $db;
+
+    public function __construct(Connection $db)
+    {
+        $this->db = $db;
+    }
 
     public function view(string $path, array $params = null)
     {
