@@ -9,6 +9,8 @@ class AdminPostController extends Controller{
 
     public function index()
     {
+        $this->isAdmin();
+
         $posts = (new Post($this->connectDB()))->getAll();
 
         return $this->view('admin/post/index', compact('posts'));
@@ -16,11 +18,15 @@ class AdminPostController extends Controller{
 
     public function create()
     {
+        $this->isAdmin();
+
         return $this->view('admin/post/form');
     }
     
     public function createPost()
     {
+        $this->isAdmin();
+
         $post = new Post($this->connectDB());
 
         $result = $post->create($_POST);
@@ -32,6 +38,8 @@ class AdminPostController extends Controller{
 
     public function edit(int $id)
     {
+        $this->isAdmin();
+
         $post = (new Post($this->connectDB()))->findById($id);
         
         return $this->view('admin/post/form', compact('post'));
@@ -39,6 +47,8 @@ class AdminPostController extends Controller{
 
     public function update(int $id)
     {
+        $this->isAdmin();
+
         $post = new Post($this->connectDB());
         $result = $post->update($id, $_POST);
 
@@ -49,6 +59,8 @@ class AdminPostController extends Controller{
 
     public function delete(int $id)
     {
+        $this->isAdmin();
+        
         $post = new Post($this->connectDB());
         $result = $post->delete($id);
 

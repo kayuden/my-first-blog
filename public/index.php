@@ -18,6 +18,10 @@ $router->get('/', 'Src\Controllers\PostController@homepage'); //accueil
 $router->get('/posts', 'Src\Controllers\PostController@listPosts'); //liste des posts
 $router->get('/posts/:id', 'Src\Controllers\PostController@showPost'); //détail d'un post
 
+$router->get('/login', 'Src\Controllers\UserController@login'); //formulaire de connexion
+$router->post('/login', 'Src\Controllers\UserController@loginPost'); //connexion et redirection
+$router->get('/logout', 'Src\Controllers\UserController@logout'); //déconnexion
+
 $router->get('/admin/posts', 'Src\Controllers\Admin\AdminPostController@index'); //accueil partie admin
 $router->get('/admin/posts/create', 'Src\Controllers\Admin\AdminPostController@create'); //page form de création d'un post
 $router->post('/admin/posts/create', 'Src\Controllers\Admin\AdminPostController@createPost'); //création d'un post

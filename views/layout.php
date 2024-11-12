@@ -15,12 +15,19 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/my-first-php-blog">Accueil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/my-first-php-blog/posts">Les articles</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/my-first-php-blog">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/my-first-php-blog/posts">Les articles</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <?php if (isset($_SESSION['auth'])): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/my-first-php-blog/logout">Se déconnecter</a>
+                </li>
+                <?php endif ?>
             </ul>
         </div>
     </nav>
