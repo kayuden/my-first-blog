@@ -65,7 +65,7 @@
                     </div>
                     <?php foreach($params['posts'] as $post): ?>
                         <h2><?= $post->title ?></h2>
-                        <small>Publié le <?= $post->getCreatedAt() ?></small>
+                        <small>Publié le <?= $post->getCreationDate() ?></small>
                         <p><?= $post->chapo ?></p>
                         <p><?= $post->content ?></p>
                         <a href="/my-first-php-blog/posts/<?= $post->id ?>" class="btn btn-primary">Lire plus</a>

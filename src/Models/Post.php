@@ -15,8 +15,8 @@ class Post extends Model {
 
     protected  $table = 'posts';
 
-    public function getCreatedAt(): string
+    public function getCreationDate(): string
     {
-        return $date = (new DateTime($this->creation_date))->format('d/m/Y à H:m');
+        return $date = (new DateTime($this->creation_date))->format('d/m/Y à H:i');
     }
 }
