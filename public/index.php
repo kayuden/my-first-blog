@@ -1,5 +1,7 @@
 <?php 
- use Router\Router;
+
+use Router\Router;
+use Src\Exceptions\NotFoundException;
 
 require '../vendor/autoload.php';
 
@@ -16,4 +18,8 @@ $router->get('/', 'Src\Controllers\PostController@homepage');
 $router->get('/posts', 'Src\Controllers\PostController@listPosts');
 $router->get('/posts/:id', 'Src\Controllers\PostController@showPost');
 
-$router->run();
+try{
+    $router->run();
+} catch (NotFoundException $e){
+    echo $e->error404();
+}
