@@ -3,8 +3,45 @@
 namespace Src\Controllers;
 
 use Src\Models\User;
+use Src\Validation\Validator;
 
 class UserController extends Controller {
+
+    public function register()
+    {
+        return $this->view('authentification/register');
+    }
+
+    public function registerPost()
+    {
+        $validator = new Validator($_POST);
+        $errors = $validator->validate([
+            'username' => ['required'],
+            'email' => ['required'],
+            'email-conf' => ['required', 'confirmation'],
+            'password' => ['required', 'min:16'],
+            'password-conf' => ['required', 'min:16', 'confirmation']
+        ]);
+
+        if ($errors) {
+            $_SESSION['errors'][] = $errors;
+            header('Location: /my-first-php-blog/register');
+            exit;
+        }
+
+        $user = new User($this->connectDB());
+
+        $result = $user->createUser($_POST['username'],$_POST['email'],$_POST['password']);
+
+        if ($result){
+            return header('Location: /my-first-php-blog/register_success');
+        }
+    }
+
+    public function registerSuccess()
+    {
+        return $this->view('authentification/register_success');
+    }
 
     public function login()
     {
@@ -13,6 +50,18 @@ class UserController extends Controller {
 
     public function loginPost()
     {
+        $validator = new Validator($_POST);
+        $errors = $validator->validate([
+            'username' => ['required'],
+            'password' => ['required']
+        ]);
+
+        if ($errors) {
+            $_SESSION['errors'][] = $errors;
+            header('Location: /my-first-php-blog/login');
+            exit;
+        }
+
         $user = (new User($this->connectDB()))->getByUsername($_POST['username']);
 
         if (password_verify($_POST['password'], $user->password)) {

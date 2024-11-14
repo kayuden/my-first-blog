@@ -49,6 +49,24 @@
                         <li class="page-scroll">
                             <a href="/my-first-php-blog/posts">Articles</a>
                         </li>
+                        <?php if (isset($_SESSION['auth'])): ?> <!-- si connecté -->
+                        <li class="page-scroll">
+                            <a href="/my-first-php-blog/admin/posts">Partie admin</a>
+                        </li>
+                        <?php endif ?>
+                        <?php if (!isset($_SESSION['auth'])): ?>  <!-- si déconnecté -->
+                        <li class="page-scroll">
+                            <a href="/my-first-php-blog/register">Inscription</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="/my-first-php-blog/login">Connexion</a>
+                        </li>
+                        <?php endif ?>
+                        <?php if (isset($_SESSION['auth'])): ?> <!-- si connecté -->
+                        <li class="page-scroll">
+                            <a href="/my-first-php-blog/logout">Se déconnecter</a>
+                        </li>
+                        <?php endif ?>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
