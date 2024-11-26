@@ -2,8 +2,6 @@
 
 namespace Src\Models;
 
-use DateTime;
-
 class Post extends Model {
 
     public int $id;
@@ -11,12 +9,26 @@ class Post extends Model {
     public string $title;
     public string $chapo;
     public string $content;
-    public string $creation_date;
 
     protected  $table = 'posts';
 
-    public function getCreationDate(): string
+    public function getAll(): array
     {
-        return $date = (new DateTime($this->creation_date))->format('d/m/Y à H:i');
+        return $this->query("
+        SELECT p.*, u.username 
+        FROM posts p
+        JOIN users u ON p.author_id = u.id
+        ORDER BY creation_date DESC");
+    }
+
+    public function findById(int $id): Post
+    {
+        return $this->query("
+        SELECT p.*, u.username
+        FROM posts p
+        JOIN users u ON p.author_id = u.id
+        WHERE p.id = ?
+        ORDER BY p.creation_date DESC
+        ", [$id], true);
     }
 }

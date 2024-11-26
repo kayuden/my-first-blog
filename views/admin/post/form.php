@@ -1,13 +1,10 @@
+
 <h1><?= $params['post']->title ?? 'Créer un nouvel article' ?></h1>
 
 <form action="<?= isset($params['post']) ? "/my-first-php-blog/admin/posts/edit/{$params['post']->id}" : "/my-first-php-blog/admin/posts/create" ?>" method="POST">
     <div class="form-group">
         <label for="title">Titre de l'article</label>
         <input type="text" class="form-control" name="title" id="title" value="<?= $params['post']->title ?? '' ?>">
-    </div>
-    <div class="form-group">
-        <label for="author_id">Auteur de l'article</label>
-        <input type="text" class="form-control" name="author_id" id="author_id" value="<?= $params['post']->author_id ?? '' ?>">
     </div>
     <div class="form-group">
         <label for="chapo">Chapo de l'article</label>

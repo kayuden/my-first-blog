@@ -36,7 +36,7 @@ abstract class Controller {
 
     protected function isAdmin()
     {
-        if(isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
+        if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === 1) {
             return true;
         } else {
             return header('Location: /my-first-php-blog/login');

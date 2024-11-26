@@ -18,6 +18,8 @@ $router->get('/', 'Src\Controllers\PostController@homepage'); //accueil
 $router->get('/posts', 'Src\Controllers\PostController@listPosts'); //liste des posts
 $router->get('/posts/:id', 'Src\Controllers\PostController@showPost'); //détail d'un post
 
+$router->post('/comments/create', 'Src\Controllers\CommentController@createComment'); //création d'un commentaire
+
 $router->get('/register', 'Src\Controllers\UserController@register'); //formulaire d'inscription
 $router->post('/register', 'Src\Controllers\UserController@registerPost'); //création d'un user en BDD
 $router->get('/register_success', 'Src\Controllers\UserController@registerSuccess'); //création réussie

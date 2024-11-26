@@ -3,30 +3,35 @@
 namespace Src\Models;
 
 use PDO;
+use DateTime;
 use Src\Database\Connection;
 
 abstract class Model {
     
     protected $db;
     protected $table;
+    protected $creation_date;
 
     public function __construct(Connection $db)
     {
         $this->db = $db;
     }
 
-    public function getAll(): array
+    public function getCreationDate(): string
     {
-        return $this->query("SELECT * FROM {$this->table} ORDER BY creation_date DESC");
-    }
-
-    public function findById(int $id): Model
-    {
-        return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
+        return $date = (new DateTime($this->creation_date))->format('d/m/Y à H:i');
     }
 
     public function create(array $data)
     {
+        if (isset($_SESSION['user_id'])) {
+            $data['author_id'] = $_SESSION['user_id'];
+        }
+
+        if (isset($_SESSION['post_id'])) {
+            $data['post_id'] = $_SESSION['post_id'];
+        }
+
         $firstParenthesis = "";
         $secondParenthesis = "";
         $i = 1;
@@ -37,6 +42,9 @@ abstract class Model {
             $secondParenthesis .= ":{$key}{$comma}";
             $i++;
         }
+
+        echo("INSERT INTO {$this->table} ($firstParenthesis) VALUES ($secondParenthesis)".print_r($data, true));
+        die();
 
         return $this->query("INSERT INTO {$this->table} ($firstParenthesis)
         VALUES ($secondParenthesis)", $data);

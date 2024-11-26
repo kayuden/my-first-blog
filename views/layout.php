@@ -21,14 +21,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/my-first-php-blog/posts">Les derniers articles</a>
             </li>
-            <?php if (isset($_SESSION['auth'])): ?> <!-- si connecté -->
+            <?php if (isset($_SESSION['isAdmin'])): ?> <!-- si connecté -->
             <li class="nav-item">
                 <a class="nav-link btn btn-secundary text-danger" href="/my-first-php-blog/admin/posts">Partie admin</a>
             </li>
             <?php endif ?>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <?php if (!isset($_SESSION['auth'])): ?>  <!-- si déconnecté -->
+            <?php if (!isset($_SESSION['isAdmin'])): ?>  <!-- si déconnecté -->
             <li class="nav-item">
                 <a class="nav-link btn btn-outline-dark mr-2" href="/my-first-php-blog/register">Inscription</a>
             </li>
@@ -36,7 +36,7 @@
                 <a class="nav-link btn btn-outline-primary text-primary" href="/my-first-php-blog/login">Connexion</a>
             </li>
             <?php endif ?>
-            <?php if (isset($_SESSION['auth'])): ?> <!-- si connecté -->
+            <?php if (isset($_SESSION['isAdmin'])): ?> <!-- si connecté -->
             <li class="nav-item">
                 <a class="nav-link btn btn-outline-danger text-danger" href="/my-first-php-blog/logout">Se déconnecter</a>
             </li>

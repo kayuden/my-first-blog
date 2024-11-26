@@ -65,7 +65,9 @@ class UserController extends Controller {
         $user = (new User($this->connectDB()))->getByUsername($_POST['username']);
 
         if (password_verify($_POST['password'], $user->password)) {
-            $_SESSION['auth'] = (int) $user->is_admin;
+            $_SESSION['isAdmin'] = (int) $user->is_admin;
+            $_SESSION['user_id'] = (int) $user->id;
+            $_SESSION['username'] = (string) $user->username;
             return header('Location: /my-first-php-blog/admin/posts?success=true');
 
         } else {
