@@ -15,8 +15,8 @@ define('DB_PASSWORD', '');
 $router = new Router($_GET['url']);
 
 $router->get('/', 'Src\Controllers\PostController@homepage'); //accueil
-$router->get('/posts', 'Src\Controllers\PostController@listPosts'); //liste des posts
-$router->get('/posts/:id', 'Src\Controllers\PostController@showPost'); //détail d'un post
+$router->get('/posts', 'Src\Controllers\PostController@listPosts'); //liste des articles
+$router->get('/posts/:id', 'Src\Controllers\PostController@showPost'); //détail d'un article
 
 $router->post('/comments/create', 'Src\Controllers\CommentController@createComment'); //création d'un commentaire
 
@@ -28,12 +28,25 @@ $router->get('/login', 'Src\Controllers\UserController@login'); //formulaire de 
 $router->post('/login', 'Src\Controllers\UserController@loginPost'); //connexion et redirection
 $router->get('/logout', 'Src\Controllers\UserController@logout'); //déconnexion
 
-$router->get('/admin/posts', 'Src\Controllers\Admin\AdminPostController@index'); //accueil partie admin
-$router->get('/admin/posts/create', 'Src\Controllers\Admin\AdminPostController@create'); //page form de création d'un post
-$router->post('/admin/posts/create', 'Src\Controllers\Admin\AdminPostController@createPost'); //création d'un post
-$router->post('/admin/posts/delete/:id', 'Src\Controllers\Admin\AdminPostController@delete'); //suppression d'un post par id en BDD
-$router->get('/admin/posts/edit/:id', 'Src\Controllers\Admin\AdminPostController@edit'); //page form de modif d'un post
-$router->post('/admin/posts/edit/:id', 'Src\Controllers\Admin\AdminPostController@update'); //modification d'un post en BDD
+/*partie admin*/
+
+//gestion des posts
+$router->get('/admin/posts', 'Src\Controllers\Admin\AdminPostController@getAdminPosts'); //liste les articles
+$router->get('/admin/posts/create', 'Src\Controllers\Admin\AdminPostController@create'); //page form de création d'un article
+$router->post('/admin/posts/create', 'Src\Controllers\Admin\AdminPostController@createPost'); //création d'un article
+$router->post('/admin/posts/delete/:id', 'Src\Controllers\Admin\AdminPostController@delete'); //suppression d'un article en BDD
+$router->get('/admin/posts/edit/:id', 'Src\Controllers\Admin\AdminPostController@edit'); //page form de modif d'un article
+$router->post('/admin/posts/edit/:id', 'Src\Controllers\Admin\AdminPostController@update'); //modification d'un article en BDD
+
+//gestion des commentaires
+$router->get('/admin/comments', 'Src\Controllers\Admin\AdminCommentController@getAdminComments'); //liste les commentaires à valider
+$router->get('/admin/comments/validate/:id', 'Src\Controllers\Admin\AdminCommentController@validate'); //validation d'un commentaire en BDD
+$router->post('/admin/comments/delete/:id', 'Src\Controllers\Admin\AdminCommentController@delete'); //suppression d'un commentaire en BDD
+
+//gestion des utilisateurs
+$router->get('/admin/users', 'Src\Controllers\Admin\AdminUserController@getAdminUsers'); //liste les utilisateurs
+$router->post('/admin/users/changerole/:id', 'Src\Controllers\Admin\AdminUserController@update'); //modification du rôle d'un utilisateur
+
 
 try{
     $router->run();

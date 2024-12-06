@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/my-first-php-blog">Mon Blog</a>
+    <a class="navbar-brand" href="/my-first-php-blog">Mon Premier Blog PHP</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,14 +21,23 @@
             <li class="nav-item">
                 <a class="nav-link" href="/my-first-php-blog/posts">Les derniers articles</a>
             </li>
-            <?php if (isset($_SESSION['isAdmin'])): ?> <!-- si connecté -->
-            <li class="nav-item">
-                <a class="nav-link btn btn-secundary text-danger" href="/my-first-php-blog/admin/posts">Partie admin</a>
-            </li>
+            
+            <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
+                <?php if ($_SESSION['isAdmin'] === 1): ?> <!-- si connecté -->
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-secundary text-danger" href="/my-first-php-blog/admin/posts">Gestion des articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-secundary text-danger" href="/my-first-php-blog/admin/comments">Gestion des commentaires</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-secundary text-danger" href="/my-first-php-blog/admin/users">Gestion des utilisateurs</a>
+                    </li>
+                <?php endif ?>
             <?php endif ?>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <?php if (!isset($_SESSION['isAdmin'])): ?>  <!-- si déconnecté -->
+            <?php if (!isset($_SESSION['user_id'])): ?>  <!-- si déconnecté -->
             <li class="nav-item">
                 <a class="nav-link btn btn-outline-dark mr-2" href="/my-first-php-blog/register">Inscription</a>
             </li>
@@ -36,7 +45,7 @@
                 <a class="nav-link btn btn-outline-primary text-primary" href="/my-first-php-blog/login">Connexion</a>
             </li>
             <?php endif ?>
-            <?php if (isset($_SESSION['isAdmin'])): ?> <!-- si connecté -->
+            <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
             <li class="nav-item">
                 <a class="nav-link btn btn-outline-danger text-danger" href="/my-first-php-blog/logout">Se déconnecter</a>
             </li>

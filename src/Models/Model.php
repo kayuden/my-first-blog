@@ -17,6 +17,13 @@ abstract class Model {
         $this->db = $db;
     }
 
+    public function getAll(): array
+    {
+        $stmt = $this->db->getPDO()->query("SELECT * FROM {$this->table}");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
+        return $stmt->fetchAll();
+    }
+
     public function getCreationDate(): string
     {
         return $date = (new DateTime($this->creation_date))->format('d/m/Y à H:i');
@@ -42,9 +49,6 @@ abstract class Model {
             $secondParenthesis .= ":{$key}{$comma}";
             $i++;
         }
-
-        echo("INSERT INTO {$this->table} ($firstParenthesis) VALUES ($secondParenthesis)".print_r($data, true));
-        die();
 
         return $this->query("INSERT INTO {$this->table} ($firstParenthesis)
         VALUES ($secondParenthesis)", $data);

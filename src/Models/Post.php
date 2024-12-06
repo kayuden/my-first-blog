@@ -12,7 +12,7 @@ class Post extends Model {
 
     protected  $table = 'posts';
 
-    public function getAll(): array
+    public function getAllPosts(): array
     {
         return $this->query("
         SELECT p.*, u.username 

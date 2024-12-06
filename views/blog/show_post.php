@@ -1,6 +1,5 @@
 <a href="/my-first-php-blog/posts" class="btn btn-secondary mt-2">Retour aux articles</a>
 
-
 <?php $_SESSION['post_id'] = (int) $params['post']->id; ?>
 
 <h1><?= $params['post']->title ?></h1>

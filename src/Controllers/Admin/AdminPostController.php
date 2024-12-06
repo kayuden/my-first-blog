@@ -7,11 +7,11 @@ use Src\Models\Post;
 
 class AdminPostController extends Controller{
 
-    public function index()
+    public function getAdminPosts()
     {
         $this->isAdmin();
 
-        $posts = (new Post($this->connectDB()))->getAll();
+        $posts = (new Post($this->connectDB()))->getAllPosts();
 
         return $this->view('admin/post/index', compact('posts'));
     }

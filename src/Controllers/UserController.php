@@ -68,7 +68,13 @@ class UserController extends Controller {
             $_SESSION['isAdmin'] = (int) $user->is_admin;
             $_SESSION['user_id'] = (int) $user->id;
             $_SESSION['username'] = (string) $user->username;
-            return header('Location: /my-first-php-blog/admin/posts?success=true');
+
+            if ($_SESSION['isAdmin'] === 1){
+                return header('Location: /my-first-php-blog/admin/posts?success=true');
+            } else {
+                return header('Location: /my-first-php-blog/posts');
+            }
+            
 
         } else {
             return header('Location: /my-first-php-blog/login');

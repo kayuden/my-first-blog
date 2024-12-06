@@ -15,7 +15,7 @@ class PostController extends Controller {
     public function listPosts()
     {
         $post = new Post($this->connectDB());
-        $posts = $post->getAll();
+        $posts = $post->getAllPosts();
         return $this->view('blog/list_posts', compact('posts'));
     }
 

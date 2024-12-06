@@ -23,10 +23,9 @@
                 <td><?= $post->getCreationDate() ?></td>
                 <td>
                     <a href="/my-first-php-blog/admin/posts/edit/<?= $post->id ?>" class="btn btn-warning">Modifier</a>
-                    <form action="/my-first-php-blog/admin/posts/delete/<?= $post->id ?>" method="POST" class="d-inline">
+                    <form action="/my-first-php-blog/admin/posts/delete/<?= $post->id ?>" method="POST" class="d-inline"  onsubmit="return confirm('Voulez-vous supprimer cet article ?');">
                         <button type="submit" class="btn btn-danger">Supprimer</button>
                     </form>
-                    
                 </td>
             </tr>
         <?php endforeach ?>
