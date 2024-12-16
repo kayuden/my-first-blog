@@ -1,14 +1,14 @@
 <?php 
 
-use Router\Router;
+use Src\Routes\Router;
 use Src\Exceptions\NotFoundException;
 
 require '../vendor/autoload.php';
 
-define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
+define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR);
 define('SCRIPTS', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR) ;
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'my_first_php_blog');
+define('DB_NAME', 'my_first_blog');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
@@ -45,7 +45,8 @@ $router->post('/admin/comments/delete/:id', 'Src\Controllers\Admin\AdminCommentC
 
 //gestion des utilisateurs
 $router->get('/admin/users', 'Src\Controllers\Admin\AdminUserController@getAdminUsers'); //liste les utilisateurs
-$router->post('/admin/users/changerole/:id', 'Src\Controllers\Admin\AdminUserController@update'); //modification du rôle d'un utilisateur
+$router->post('/admin/users/changerole/:id', 'Src\Controllers\Admin\AdminUserController@update'); //modification du rôle d'un utilisateur en BDD
+$router->post('/admin/users/delete/:id', 'Src\Controllers\Admin\AdminUserController@delete'); //suppression d'un utilisateur en BDD
 
 
 try{

@@ -1,4 +1,4 @@
-<a href="/my-first-php-blog/posts" class="btn btn-secondary mt-2">Retour aux articles</a>
+<a href="/my-first-blog/posts" class="btn btn-secondary mt-2">Retour aux articles</a>
 
 <?php $_SESSION['post_id'] = (int) $params['post']->id; ?>
 
@@ -7,7 +7,7 @@
 <p class="font-italic mt-3"><?= $params['post']->chapo ?></p>
 <p><?= $params['post']->content ?></p>
 
-<h2>Commentaires (<?= count($params['comment']) ?>)</h2>
+<h3>Commentaires (<?= count($params['comment']) ?>)</h3>
 
 <?php if (isset($_SESSION['isAdmin'])): ?> <!-- si connecté -->
     <?php if(isset($_GET['success'])): ?>
@@ -15,7 +15,7 @@
     <?php endif ?>
 
     <div>
-        <form action="/my-first-php-blog/comments/create" method="POST">
+        <form action="/my-first-blog/comments/create" method="POST">
             <div class="form-group">
                 <input type="text" class="form-control" name="content" id="content" placeholder="Ajouter un commentaire" required>
             </div>

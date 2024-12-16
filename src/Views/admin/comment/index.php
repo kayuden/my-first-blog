@@ -13,7 +13,7 @@
         <th scope="col">Auteur</th>
         <th scope="col">Publié le</th>
         <th scope="col">Lien vers l'article associé</th>
-        <th scope="col">Action</th>
+        <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -23,10 +23,10 @@
                     <td><?= $comment->content ?></td>
                     <td><?= $comment->username ?></td>
                     <td><?= $comment->getCreationDate() ?></td>
-                    <td><a href="/my-first-php-blog/posts/<?= $comment->post_id ?>" class="link-underline-primary"><?= $comment->post_title ?></a></td>
+                    <td><a href="/my-first-blog/posts/<?= $comment->post_id ?>" class="link-underline-primary"><?= $comment->post_title ?></a></td>
                     <td>
-                        <a href="/my-first-php-blog/admin/comments/validate/<?= $comment->id ?>" class="btn btn-success">Valider</a>
-                        <form action="/my-first-php-blog/admin/comments/delete/<?= $comment->id ?>" method="POST" class="d-inline" onsubmit="return confirm('Voulez-vous supprimer ce commentaire ?');">
+                        <a href="/my-first-blog/admin/comments/validate/<?= $comment->id ?>" class="btn btn-success">Valider</a>
+                        <form action="/my-first-blog/admin/comments/delete/<?= $comment->id ?>" method="POST" class="d-inline" onsubmit="return confirm('Voulez-vous supprimer ce commentaire ?');">
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>
                     </td>

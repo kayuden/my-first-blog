@@ -32,7 +32,7 @@ class AdminPostController extends Controller{
         $result = $post->create($_POST);
 
         if ($result){
-            return header('Location: /my-first-php-blog/admin/posts');
+            return header('Location: /my-first-blog/admin/posts');
         }
     }
 
@@ -53,7 +53,7 @@ class AdminPostController extends Controller{
         $result = $post->update($id, $_POST);
 
         if ($result){
-            return header('Location: /my-first-php-blog/admin/posts');
+            return header('Location: /my-first-blog/admin/posts');
         }
     }
 
@@ -65,7 +65,7 @@ class AdminPostController extends Controller{
         $result = $post->delete($id);
 
         if ($result){
-            return header('Location: /my-first-php-blog/admin/posts');
+            return header('Location: /my-first-blog/admin/posts');
         }
     }
 }

@@ -39,9 +39,9 @@ abstract class Controller {
         if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === 1) {
             return true;
         } elseif ($_SESSION['isAdmin'] === 0) {
-            return header('Location: /my-first-php-blog');
+            return header('Location: /my-first-blog');
         } else {
-            return header('Location: /my-first-php-blog/login');
+            return header('Location: /my-first-blog/login');
         }
     }
 }

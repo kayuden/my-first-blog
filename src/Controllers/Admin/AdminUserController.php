@@ -24,7 +24,19 @@ class AdminUserController extends Controller{
         $result = $user->update($id, $_POST);
 
         if ($result){
-            return header('Location: /my-first-php-blog/admin/users');
+            return header('Location: /my-first-blog/admin/users');
+        }
+    }
+
+    public function delete(int $id)
+    {
+        $this->isAdmin();
+        
+        $user = new User($this->connectDB());
+        $result = $user->delete($id);
+
+        if ($result){
+            return header('Location: /my-first-blog/admin/users');
         }
     }
 }

@@ -13,7 +13,7 @@ class CommentController extends Controller {
         $result = $comment->create($_POST);
 
         if ($result){
-            return header("Location: /my-first-php-blog/posts/{$_SESSION['post_id']}?success=true");
+            return header("Location: /my-first-blog/posts/{$_SESSION['post_id']}?success=true");
         }
     }
 }

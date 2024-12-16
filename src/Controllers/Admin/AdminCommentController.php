@@ -24,7 +24,7 @@ class AdminCommentController extends Controller{
         $result = $comment->validate($id);
 
         if ($result){
-            return header('Location: /my-first-php-blog/admin/comments');
+            return header('Location: /my-first-blog/admin/comments');
         }
     }
 
@@ -36,7 +36,7 @@ class AdminCommentController extends Controller{
         $result = $comment->delete($id);
 
         if ($result){
-            return header('Location: /my-first-php-blog/admin/comments');
+            return header('Location: /my-first-blog/admin/comments');
         }
     }
 }

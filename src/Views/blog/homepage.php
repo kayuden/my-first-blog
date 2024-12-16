@@ -34,7 +34,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="#page-top">Mon Premier Blog PHP</a>
+                    <a class="navbar-brand" href="#page-top">Mon Premier Blog</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,29 +44,29 @@
                             <a href="#page-top"></a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog">Accueil</a>
+                            <a href="/my-first-blog">Accueil</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog/posts">Articles</a>
+                            <a href="/my-first-blog/posts">Articles</a>
                         </li>
                         <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
                             <?php if ($_SESSION['isAdmin'] === 1): ?>
                                 <li class="page-scroll">
-                                    <a href="/my-first-php-blog/admin/posts">Partie admin</a>
+                                    <a href="/my-first-blog/admin/posts">Partie admin</a>
                                 </li>
                             <?php endif ?>
                         <?php endif ?>
                         <?php if (!isset($_SESSION['user_id'])): ?>  <!-- si déconnecté -->
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog/register">Inscription</a>
+                            <a href="/my-first-blog/register">Inscription</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog/login">Connexion</a>
+                            <a href="/my-first-blog/login">Connexion</a>
                         </li>
                         <?php endif ?>
                         <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog/logout">Se déconnecter</a>
+                            <a href="/my-first-blog/logout">Se déconnecter</a>
                         </li>
                         <?php endif ?>
                     </ul>
@@ -171,7 +171,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2>About</h2>
+                        <h2>À propos de moi</h2>
                         <hr class="star-light">
                     </div>
                 </div>
@@ -196,7 +196,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2>Contact Me</h2>
+                        <h2>Me contacter</h2>
                         <hr class="star-primary">
                     </div>
                 </div>
@@ -207,29 +207,22 @@
                         <form name="sentMessage" id="contactForm" novalidate>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                    <label>Nom d'utilisateur</label>
+                                    <input type="text" class="form-control" placeholder="Nom d'utilisateur" id="username" required data-validation-required-message="Vous devez entrer un nom d'utilisateur">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Email Address</label>
-                                    <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Phone Number</label>
-                                    <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                    <label>Adresse e-mail</label>
+                                    <input type="email" class="form-control" placeholder="Adresse e-mail" id="email" required data-validation-required-message="Vous devez entrer une adresse e-mail">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>Message</label>
-                                    <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                    <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Vous devez entrer un message"></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -237,7 +230,7 @@
                             <div id="success"></div>
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <button type="submit" class="btn btn-success btn-lg">Send</button>
+                                    <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
                                 </div>
                             </div>
                         </form>
@@ -257,22 +250,16 @@
                                 <br>Beverly Hills, CA 90210</p>
                         </div>
                         <div class="footer-col col-md-4">
-                            <h3>Around the Web</h3>
+                            <h3>Mes réseaux !</h3>
                             <ul class="list-inline">
                                 <li>
                                     <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                                 </li>
                                 <li>
                                     <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                                 </li>
                                 <li>
                                     <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -287,7 +274,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            Copyright &copy; Your Website 2016
+                            Copyright &copy; Mon Premier Blog 2024
                         </div>
                     </div>
                 </div>

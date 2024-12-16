@@ -15,7 +15,7 @@
 
 <h1>Se connecter</h1>
 
-<form action="/my-first-php-blog/login" method="POST">
+<form action="/my-first-blog/login" method="POST">
     <div class="form-group">
         <label for="username">Nom d'utilisateur</label>
         <input type="text" class="form-control" name="username" id="username" required>

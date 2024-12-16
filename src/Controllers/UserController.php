@@ -25,7 +25,7 @@ class UserController extends Controller {
 
         if ($errors) {
             $_SESSION['errors'][] = $errors;
-            header('Location: /my-first-php-blog/register');
+            header('Location: /my-first-blog/register');
             exit;
         }
 
@@ -34,7 +34,7 @@ class UserController extends Controller {
         $result = $user->createUser($_POST['username'],$_POST['email'],$_POST['password']);
 
         if ($result){
-            return header('Location: /my-first-php-blog/register_success');
+            return header('Location: /my-first-blog/register_success');
         }
     }
 
@@ -58,7 +58,7 @@ class UserController extends Controller {
 
         if ($errors) {
             $_SESSION['errors'][] = $errors;
-            header('Location: /my-first-php-blog/login');
+            header('Location: /my-first-blog/login');
             exit;
         }
 
@@ -70,14 +70,14 @@ class UserController extends Controller {
             $_SESSION['username'] = (string) $user->username;
 
             if ($_SESSION['isAdmin'] === 1){
-                return header('Location: /my-first-php-blog/admin/posts?success=true');
+                return header('Location: /my-first-blog/admin/posts?success=true');
             } else {
-                return header('Location: /my-first-php-blog/posts');
+                return header('Location: /my-first-blog/posts');
             }
             
 
         } else {
-            return header('Location: /my-first-php-blog/login');
+            return header('Location: /my-first-blog/login');
         }
     }
 
@@ -85,6 +85,6 @@ class UserController extends Controller {
     {
         session_destroy();
 
-        return header('Location: /my-first-php-blog');
+        return header('Location: /my-first-blog');
     }
 }

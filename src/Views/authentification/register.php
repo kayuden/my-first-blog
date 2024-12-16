@@ -15,7 +15,7 @@
 <?php endif ?>
 <?php session_destroy()?>
 
-<form action="/my-first-php-blog/register" method="POST">
+<form action="/my-first-blog/register" method="POST">
     <div class="form-group">
         <label for="username">Nom d'utilisateur</label>
         <input type="text" class="form-control" name="username" id="username" required autocomplete="off">
@@ -29,11 +29,11 @@
         <input type="email" class="form-control" name="email-conf" id="email-conf" required autocomplete="off">
     </div>
     <div class="form-group">
-        <label for="password">Mot de passe</label>
+        <label for="password">Mot de passe (16 caractères)</label>
         <input type="password" class="form-control" name="password" id="password" pattern=".{16,}" required>
     </div>
     <div class="form-group">
-        <label for="password-conf">Confirmation du mot de passe</label>
+        <label for="password-conf">Confirmation du mot de passe (16 caractères)</label>
         <input type="password" class="form-control" name="password-conf" id="password-conf" pattern=".{16,}" required>
     </div>
     <button type="submit" class="btn btn-primary">S'inscrire</button>

@@ -9,7 +9,9 @@ class PostController extends Controller {
 
     public function homepage()
     {
-        return $this->view('blog/homepage');
+        $post = new Post($this->connectDB());
+        $posts = $post->getAllPosts();
+        return $this->view('blog/homepage', compact('posts'));
     }
     
     public function listPosts()

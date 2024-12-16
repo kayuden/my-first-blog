@@ -1,8 +1,7 @@
 {
-    "name": "kai/my-first-php-blog",
+    "name": "kai/my-first-blog",
     "autoload": {
         "psr-4": {
-            "Router\\": "routes/",
             "Src\\": "src/"
         }
     },

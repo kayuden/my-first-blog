@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Mon Premier Blog PHP</title>
+        <title>Mon Premier Blog</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="<?= SCRIPTS . 'vendor/bootstrap/css' . DIRECTORY_SEPARATOR . 'bootstrap.min.css'?>" rel="stylesheet">
@@ -34,7 +34,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="#page-top">Mon Premier Blog PHP</a>
+                    <a class="navbar-brand" href="#page-top">Mon Premier Blog</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,29 +44,29 @@
                             <a href="#page-top"></a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog">Accueil</a>
+                            <a href="/my-first-blog">Accueil</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog/posts">Articles</a>
+                            <a href="/my-first-blog/posts">Articles</a>
                         </li>
                         <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
                             <?php if ($_SESSION['isAdmin'] === 1): ?>
                                 <li class="page-scroll">
-                                    <a href="/my-first-php-blog/admin/posts">Partie admin</a>
+                                    <a href="/my-first-blog/admin/posts">Partie admin</a>
                                 </li>
                             <?php endif ?>
                         <?php endif ?>
                         <?php if (!isset($_SESSION['user_id'])): ?>  <!-- si déconnecté -->
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog/register">Inscription</a>
+                            <a href="/my-first-blog/register">Inscription</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog/login">Connexion</a>
+                            <a href="/my-first-blog/login">Connexion</a>
                         </li>
                         <?php endif ?>
                         <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
                         <li class="page-scroll">
-                            <a href="/my-first-php-blog/logout">Se déconnecter</a>
+                            <a href="/my-first-blog/logout">Se déconnecter</a>
                         </li>
                         <?php endif ?>
                     </ul>
@@ -84,12 +84,14 @@
                         <hr class="star-primary">
                     </div>
                     <?php foreach($params['posts'] as $post): ?>
-                        <h2><?= $post->title ?></h2>
-                        <p>Par <?= $post->username ?></p>
-                        <small>Publié le <?= $post->getCreationDate() ?></small>
-                        <p><?= $post->chapo ?></p>
-                        <p><?= $post->content ?></p>
-                        <a href="/my-first-php-blog/posts/<?= $post->id ?>" class="btn btn-primary">Lire plus</a>
+                        <div class="mb-4">
+                            <h2><?= $post->title ?></h2>
+                            <p>Par <?= $post->username ?></p>
+                            <small>Publié le <?= $post->getCreationDate() ?></small>
+                            <p><?= $post->chapo ?></p>
+                            <p><?= $post->content ?></p>
+                            <a href="/my-first-blog/posts/<?= $post->id ?>" class="btn btn-primary">Lire plus</a>
+                        </div>
                     <?php endforeach ?>
                 </div>
             </div>
