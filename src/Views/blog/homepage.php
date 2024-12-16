@@ -1,535 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php if(isset($_GET['success'])): ?>
+    <div class="alert alert-success text-center">Vous êtes connecté !</div>
+<?php endif ?>
 
-    <head>
+<?php if(isset($_GET['success_register'])): ?>
+    <div class="alert alert-success text-center">Inscription validée ! <a href="">Se connecter</a></div>
+<?php endif ?>
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+  <!-- Section présentation -->
+  <section class="text-center py-5">
+    <div class="container">
+      <img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'kb.png'?>" alt="Photo de Profil" class="rounded-circle mb-4" style="width: 150px; height: 150px;">
+      <h1>Kayden Bartholomot</h1>
+      <p class="lead">Le PHP n'a plus aucun secret pour moi !</p>
+    </div>
+  </section>
 
-        <title>Mon Premier Blog PHP</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="<?= SCRIPTS . 'vendor/bootstrap/css' . DIRECTORY_SEPARATOR . 'bootstrap.min.css'?>" rel="stylesheet">
-
-        <!-- Theme CSS -->
-        <link href="<?= SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'freelancer.min.css'?>" rel="stylesheet">
-
-        <!-- Custom Fonts -->
-        <link href="<?= SCRIPTS . 'vendor/font-awesome/css' . DIRECTORY_SEPARATOR . 'font-awesome.min.css'?>" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    </head>
-
-    <body id="page-top" class="index">
-
-        <!-- Navigation -->
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="#page-top">Mon Premier Blog</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="hidden">
-                            <a href="#page-top"></a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="/my-first-blog">Accueil</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="/my-first-blog/posts">Articles</a>
-                        </li>
-                        <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
-                            <?php if ($_SESSION['isAdmin'] === 1): ?>
-                                <li class="page-scroll">
-                                    <a href="/my-first-blog/admin/posts">Partie admin</a>
-                                </li>
-                            <?php endif ?>
-                        <?php endif ?>
-                        <?php if (!isset($_SESSION['user_id'])): ?>  <!-- si déconnecté -->
-                        <li class="page-scroll">
-                            <a href="/my-first-blog/register">Inscription</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="/my-first-blog/login">Connexion</a>
-                        </li>
-                        <?php endif ?>
-                        <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
-                        <li class="page-scroll">
-                            <a href="/my-first-blog/logout">Se déconnecter</a>
-                        </li>
-                        <?php endif ?>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
-
-        <!-- Header -->
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <img class="img-responsive" src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'kb.png'?>" alt="">
-                        <div class="intro-text">
-                            <span class="name">Kayden Bartholomot</span>
-                            <hr class="star-light">
-                            <span class="skills">Le PHP n'a plus aucun secret pour moi !</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Portfolio Grid Section -->
-        <section id="portfolio">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2>Portfolio</h2>
-                        <hr class="star-primary">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'cabin.png'?>" class="img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'cake.png'?>" class="img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'circus.png'?>" class="img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'game.png'?>" class="img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'safe.png'?>" class="img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'submarine.png'?>" class="img-responsive" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="success" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2>À propos de moi</h2>
-                        <hr class="star-light">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-lg-offset-2">
-                        <p>Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
-                    </div>
-                    <div class="col-lg-4">
-                        <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
-                    </div>
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <a href="<?= SCRIPTS . 'pdf' . DIRECTORY_SEPARATOR . 'CV_bartholomot_kayden.pdf'?>" download="CV_bartholomot_kayden.pdf" class="btn btn-lg btn-outline">
-                            <i class="fa fa-download"></i> Télécharger mon CV
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2>Me contacter</h2>
-                        <hr class="star-primary">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                        <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                        <form name="sentMessage" id="contactForm" novalidate>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Nom d'utilisateur</label>
-                                    <input type="text" class="form-control" placeholder="Nom d'utilisateur" id="username" required data-validation-required-message="Vous devez entrer un nom d'utilisateur">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Adresse e-mail</label>
-                                    <input type="email" class="form-control" placeholder="Adresse e-mail" id="email" required data-validation-required-message="Vous devez entrer une adresse e-mail">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Message</label>
-                                    <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Vous devez entrer un message"></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <br>
-                            <div id="success"></div>
-                            <div class="row">
-                                <div class="form-group col-xs-12">
-                                    <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="text-center">
-            <div class="footer-above">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-col col-md-4">
-                            <h3>Location</h3>
-                            <p>3481 Melrose Place
-                                <br>Beverly Hills, CA 90210</p>
-                        </div>
-                        <div class="footer-col col-md-4">
-                            <h3>Mes réseaux !</h3>
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="footer-col col-md-4">
-                            <h3>About Freelancer</h3>
-                            <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-below">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            Copyright &copy; Mon Premier Blog 2024
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-        <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-            <a class="btn btn-primary" href="#page-top">
-                <i class="fa fa-chevron-up"></i>
-            </a>
+  <!-- Section à propos -->
+  <section class="bg-primary bg-opacity-25 py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>À propos</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Integer nec
+            urna eget sapien volutpat tincidunt sit amet et nunc.</p>
         </div>
-
-        <!-- Portfolio Modals -->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2>Project Title</h2>
-                                <hr class="star-primary">
-                                <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'cabin.png'?>" class="img-responsive img-centered" alt="">
-                                <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong><a href="http://startbootstrap.com">April 2014</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong><a href="http://startbootstrap.com">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-6">
+          <h2>Notre Mission</h2>
+          <p>Donec nec purus orci. Proin in sapien sit amet risus cursus tempor. Maecenas sed eros sit amet eros
+            aliquam malesuada.</p>
         </div>
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2>Project Title</h2>
-                                <hr class="star-primary">
-                                <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'cake.png'?>" class="img-responsive img-centered" alt="">
-                                <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong><a href="http://startbootstrap.com">April 2014</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong><a href="http://startbootstrap.com">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="<?= SCRIPTS . 'pdf' . DIRECTORY_SEPARATOR . 'CV_bartholomot_kayden.pdf'?>" download="CV_bartholomot_kayden.pdf" class="btn btn-primary">
+            Télécharger mon CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section formulaire de contact -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Me contacter</h2>
+      <form>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input type="text" class="form-control" id="username" placeholder="Votre nom d'utilisateur">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="email" class="form-label">Adresse e-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Votre adresse e-mail">
+          </div>
         </div>
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2>Project Title</h2>
-                                <hr class="star-primary">
-                                <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'circus.png'?>" class="img-responsive img-centered" alt="">
-                                <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong><a href="http://startbootstrap.com">April 2014</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong><a href="http://startbootstrap.com">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="4" placeholder="Votre message"></textarea>
         </div>
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2>Project Title</h2>
-                                <hr class="star-primary">
-                                <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'game.png'?>" class="img-responsive img-centered" alt="">
-                                <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong><a href="http://startbootstrap.com">April 2014</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong><a href="http://startbootstrap.com">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Envoyer</button>
         </div>
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2>Project Title</h2>
-                                <hr class="star-primary">
-                                <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'safe.png'?>" class="img-responsive img-centered" alt="">
-                                <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong><a href="http://startbootstrap.com">April 2014</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong><a href="http://startbootstrap.com">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2>Project Title</h2>
-                                <hr class="star-primary">
-                                <img src="<?= SCRIPTS . 'img/portfolio' . DIRECTORY_SEPARATOR . 'submarine.png'?>" class="img-responsive img-centered" alt="">
-                                <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                        </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong><a href="http://startbootstrap.com">April 2014</a>
-                                        </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong><a href="http://startbootstrap.com">Web Development</a>
-                                        </strong>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </form>
+    </div>
+  </section>
 
-        <!-- jQuery -->
-        <script src="<?= SCRIPTS . 'vendor/jquery' . DIRECTORY_SEPARATOR . 'jquery.min.js'?>"></script>
-        
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="<?= SCRIPTS . 'vendor/bootstrap/js' . DIRECTORY_SEPARATOR . 'bootstrap.min.js'?>"></script>
-        
-        <!-- Plugin JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-        <!-- Contact Form JavaScript -->
-        <script src="<?= SCRIPTS . 'js' . DIRECTORY_SEPARATOR . 'jqBootstrapValidation.js'?>"></script>
-        <script src="<?= SCRIPTS . 'js' . DIRECTORY_SEPARATOR . 'contact_me.js'?>"></script>
-
-
-        <!-- Theme JavaScript -->
-        <script src="<?= SCRIPTS . 'js' . DIRECTORY_SEPARATOR . 'freelancer.min.js'?>"></script>
-
-    </body>
-
-</html>
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p>Suivez-moi sur :</p>
+        <a href="https://www.facebook.com" class="text-white mx-2" target="_blank">
+            <img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'facebook-brands-solid.svg'?>" alt="Icône Facebook" width="30">
+        </a>
+        <a href="https://www.instagram.com" class="text-white mx-2" target="_blank">
+            <img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'instagram-brands-solid.svg'?>" alt="Icône Instagram" width="30">
+        </a>
+        <a href="https://x.com" class="text-white mx-2" target="_blank">
+            <img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'x-twitter-brands-solid.svg'?>" alt="Icône X" width="30">
+        </a>
+        <a href="https://fr.linkedin.com" class="text-white mx-2" target="_blank">
+            <img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'linkedin-brands-solid.svg'?>" alt="Icône LinkedIn" width="30">
+        </a>
+    </div>
+  </footer>
+  <section class="bg-black text-white text-center py-2">
+    <small>&copy; Mon Premier Blog 2024</small>
+  </section>

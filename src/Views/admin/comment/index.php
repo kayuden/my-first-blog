@@ -1,7 +1,7 @@
-<h1 class="mb-4">Administration des commentaires</h1>
+<h1 class="text-center mb-4 mt-4">Administration des commentaires</h1>
 
 <?php if (empty($params['comments'])): ?>
-    <h2 class="mb-3">Aucun commentaire à valider</h2>
+    <p class="mb-3 text-center">Aucun commentaire à valider</p>
 <?php else: ?>
     <h2 class="mb-3">Commentaires à valider</h2>
 

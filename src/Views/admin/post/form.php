@@ -2,15 +2,15 @@
 <h1><?= $params['post']->title ?? 'Créer un nouvel article' ?></h1>
 
 <form action="<?= isset($params['post']) ? "/my-first-blog/admin/posts/edit/{$params['post']->id}" : "/my-first-blog/admin/posts/create" ?>" method="POST">
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label for="title">Titre de l'article</label>
         <input type="text" class="form-control" name="title" id="title" value="<?= $params['post']->title ?? '' ?>">
     </div>
-    <div class="form-group">
-        <label for="chapo">Chapo de l'article</label>
-        <input type="text" class="form-control" name="chapo" id="chapo" value="<?= $params['post']->chapo ?? '' ?>">
+    <div class="form-group mb-3">
+        <label for="chapo">Chapo de l'article <small>(300 caractères max)</small></label>
+        <textarea class="form-control" name="chapo" id="chapo" rows="2" maxlength="300"><?= $params['post']->chapo ?? '' ?></textarea>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-3">
         <label for="content">Contenu de l'article</label>
         <textarea name="content" id="content" rows="8" class="form-control"><?= $params['post']->content ?? '' ?></textarea>
     </div>

@@ -34,13 +34,8 @@ class UserController extends Controller {
         $result = $user->createUser($_POST['username'],$_POST['email'],$_POST['password']);
 
         if ($result){
-            return header('Location: /my-first-blog/register_success');
+            return header('Location: /my-first-blog?success_register=true');
         }
-    }
-
-    public function registerSuccess()
-    {
-        return $this->view('authentification/register_success');
     }
 
     public function login()
@@ -70,14 +65,14 @@ class UserController extends Controller {
             $_SESSION['username'] = (string) $user->username;
 
             if ($_SESSION['isAdmin'] === 1){
-                return header('Location: /my-first-blog/admin/posts?success=true');
+                return header('Location: /my-first-blog?success=true');
             } else {
                 return header('Location: /my-first-blog/posts');
             }
             
 
         } else {
-            return header('Location: /my-first-blog/login');
+            return header('Location: /my-first-blog/login?error=true');
         }
     }
 

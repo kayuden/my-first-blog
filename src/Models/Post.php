@@ -31,4 +31,9 @@ class Post extends Model {
         ORDER BY p.creation_date DESC
         ", [$id], true);
     }
+
+    public function getSummary(): string
+    {
+        return substr($this->content, 0, 600) . '...';
+    }
 }

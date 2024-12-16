@@ -19,13 +19,13 @@ abstract class Controller {
 
     protected function view(string $path, array $params = null)
     {
-        if ($path !== "blog/homepage" && $path !== "blog/list_posts"){
-            ob_start();
+        ob_start();
             require VIEWS . $path . '.php';
             $content = ob_get_clean();
-            require VIEWS . 'layout.php';
+        if (strpos($path, "admin") !== false) {
+            require VIEWS . 'layout_admin.php';
         } else {
-            require VIEWS . $path . '.php';
+            require VIEWS . 'layout.php';
         }
     }
 

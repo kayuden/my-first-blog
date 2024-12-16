@@ -22,8 +22,11 @@
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
     </div>
+<?php else: ?>
+    <div>
+        <p class="text-danger font-italic"><a href="/my-first-blog/login">Se connecter</a> pour publier un commentaire.</p>
+    </div>
 <?php endif ?>
-
 <div class="mt-3">
     <?php if (!empty($params['comment'])): ?>
             <?php foreach ($params['comment'] as $comment): ?>

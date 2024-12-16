@@ -22,7 +22,6 @@ $router->post('/comments/create', 'Src\Controllers\CommentController@createComme
 
 $router->get('/register', 'Src\Controllers\UserController@register'); //formulaire d'inscription
 $router->post('/register', 'Src\Controllers\UserController@registerPost'); //création d'un user en BDD
-$router->get('/register_success', 'Src\Controllers\UserController@registerSuccess'); //création réussie
 
 $router->get('/login', 'Src\Controllers\UserController@login'); //formulaire de connexion
 $router->post('/login', 'Src\Controllers\UserController@loginPost'); //connexion et redirection
