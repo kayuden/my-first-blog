@@ -37,10 +37,10 @@
                 <ul class="navbar-nav ml-auto">
                     <?php if (!isset($_SESSION['user_id'])): ?>  <!-- si déconnecté -->
                         <li class="nav-item">
-                            <a class="btn btn-outline-secondary" href="/my-first-blog/register">Inscription</a>
+                            <a class="btn btn-secondary text-white" href="/my-first-blog/register">Inscription</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-primary ms-2" href="/my-first-blog/login">Connexion</a>
+                            <a class="btn btn-primary text-white ms-2" href="/my-first-blog/login">Connexion</a>
                         </li>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->

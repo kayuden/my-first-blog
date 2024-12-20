@@ -15,6 +15,7 @@ define('DB_PASSWORD', '');
 $router = new Router($_GET['url']);
 
 $router->get('/', 'Src\Controllers\PostController@homepage'); //accueil
+$router->post('/send', 'Src\Controllers\ContactController@sendMail'); //envoi e-mail formulaire de contact
 $router->get('/posts', 'Src\Controllers\PostController@listPosts'); //liste des articles
 $router->get('/posts/:id', 'Src\Controllers\PostController@showPost'); //détail d'un article
 
