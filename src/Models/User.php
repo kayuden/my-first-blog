@@ -2,13 +2,12 @@
 
 namespace Src\Models;
 
-class User extends Model {
-
+class User extends Model
+{
     public int $id;
     public string $username;
     public string $email;
     public string $password;
-    public int $is_validated;
     public int $is_admin;
 
     protected $table = 'users';

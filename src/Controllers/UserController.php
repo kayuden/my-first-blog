@@ -5,8 +5,8 @@ namespace Src\Controllers;
 use Src\Models\User;
 use Src\Validation\Validator;
 
-class UserController extends Controller {
-
+class UserController extends Controller
+{
     public function register()
     {
         return $this->view('authentification/register');
@@ -33,7 +33,7 @@ class UserController extends Controller {
 
         $result = $user->createUser($_POST['username'],$_POST['email'],$_POST['password']);
 
-        if ($result){
+        if ($result) {
             return header('Location: /my-first-blog?success_register=true');
         }
     }

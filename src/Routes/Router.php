@@ -4,8 +4,8 @@ namespace Src\Routes;
 
 use Src\Exceptions\NotFoundException;
 
-class Router {
-
+class Router
+{
     public $url;
     public $routes = [];
 
@@ -27,7 +27,7 @@ class Router {
     public function run()
     {
         foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route){
-            if($route->matches($this->url)){
+            if ($route->matches($this->url)) {
                return $route->execute();
             }
         }

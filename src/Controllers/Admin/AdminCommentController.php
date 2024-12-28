@@ -5,8 +5,8 @@ namespace Src\Controllers\Admin;
 use Src\Models\Comment;
 use Src\Controllers\Controller;
 
-class AdminCommentController extends Controller{
-
+class AdminCommentController extends Controller
+{
     public function getAdminComments()
     {
         $this->isAdmin();
@@ -23,7 +23,7 @@ class AdminCommentController extends Controller{
         $comment = new Comment($this->connectDB());
         $result = $comment->validate($id);
 
-        if ($result){
+        if ($result) {
             return header('Location: /my-first-blog/admin/comments');
         }
     }
@@ -35,7 +35,7 @@ class AdminCommentController extends Controller{
         $comment = new Comment($this->connectDB());
         $result = $comment->delete($id);
 
-        if ($result){
+        if ($result) {
             return header('Location: /my-first-blog/admin/comments');
         }
     }

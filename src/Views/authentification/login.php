@@ -17,7 +17,7 @@
 <div class="container">
     <h1 class="text-center mb-4 mt-4">Se connecter</h1>
 
-    <?php if(isset($_GET['error'])): ?>
+    <?php if (isset($_GET['error'])): ?>
         <div class="alert alert-danger">L'utilisateur et le mot de passe ne correspondent pas.</div>
     <?php endif ?>
     

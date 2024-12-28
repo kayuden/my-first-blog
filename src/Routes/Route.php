@@ -4,7 +4,8 @@ namespace Src\Routes;
 
 use Src\Database\Connection;
 
-class Route {
+class Route
+{
     public $path;
     public $action;
     public $matches;

@@ -6,11 +6,12 @@ use PDO;
 use DateTime;
 use Src\Database\Connection;
 
-abstract class Model {
-    
+abstract class Model
+{    
     protected $db;
     protected $table;
     protected $creation_date;
+    protected $modification_date;
 
     public function __construct(Connection $db)
     {
@@ -27,6 +28,15 @@ abstract class Model {
     public function getCreationDate(): string
     {
         return $date = (new DateTime($this->creation_date))->format('d/m/Y à H:i');
+    }
+
+    public function getModificationDate(): string
+    {
+        if ($this->modification_date === null) {
+            return "";
+        } else {
+            return $date = (new DateTime($this->modification_date))->format('d/m/Y à H:i');
+        }
     }
 
     public function create(array $data)
@@ -79,8 +89,7 @@ abstract class Model {
     {
         $method = is_null($param) ? 'query' : 'prepare';
 
-        if (
-            strpos($sql, 'DELETE') === 0 
+        if (strpos($sql, 'DELETE') === 0 
             || strpos($sql, 'UPDATE') === 0 
             || strpos($sql, 'INSERT') === 0) {
 
@@ -94,7 +103,7 @@ abstract class Model {
         $stmt = $this->db->getPDO()->$method($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
 
-        if ($method ==='query'){
+        if ($method ==='query') {
             return $stmt->$fetch();
         } else {
             $stmt->execute($param);

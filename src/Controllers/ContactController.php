@@ -2,14 +2,14 @@
 
 namespace Src\Controllers;
 
-class ContactController extends Controller {
-
+class ContactController extends Controller
+{
     public function sendMail()
     {
         //récupération des valeurs post
         $username = htmlspecialchars($_POST['username']);
         $email = htmlspecialchars($_POST['email']);
-        $message = htmlspecialchars($_POST['message']);
+        $message = htmlspecialchars($_POST['message'],ENT_SUBSTITUTE | ENT_HTML401);
 
         if (empty($username) || empty($email) || empty($message)) {
             die("Tous les champs sont obligatoires.");

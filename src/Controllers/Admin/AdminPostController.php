@@ -5,8 +5,8 @@ namespace Src\Controllers\Admin;
 use Src\Controllers\Controller;
 use Src\Models\Post;
 
-class AdminPostController extends Controller{
-
+class AdminPostController extends Controller
+{
     public function getAdminPosts()
     {
         $this->isAdmin();
@@ -31,7 +31,7 @@ class AdminPostController extends Controller{
 
         $result = $post->create($_POST);
 
-        if ($result){
+        if ($result) {
             return header('Location: /my-first-blog/admin/posts');
         }
     }
@@ -52,7 +52,7 @@ class AdminPostController extends Controller{
         $post = new Post($this->connectDB());
         $result = $post->update($id, $_POST);
 
-        if ($result){
+        if ($result) {
             return header('Location: /my-first-blog/admin/posts');
         }
     }
@@ -64,7 +64,7 @@ class AdminPostController extends Controller{
         $post = new Post($this->connectDB());
         $result = $post->delete($id);
 
-        if ($result){
+        if ($result) {
             return header('Location: /my-first-blog/admin/posts');
         }
     }

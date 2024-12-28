@@ -4,15 +4,15 @@ namespace Src\Controllers;
 
 use Src\Models\Comment;
 
-class CommentController extends Controller {
-
+class CommentController extends Controller
+{
     public function createComment()
     {
         $comment = new Comment($this->connectDB());
 
         $result = $comment->create($_POST);
 
-        if ($result){
+        if ($result) {
             return header("Location: /my-first-blog/posts/{$_SESSION['post_id']}?success=true");
         }
     }

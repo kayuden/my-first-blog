@@ -2,8 +2,8 @@
 
 namespace Src\Validation;
 
-class Validator {
-
+class Validator
+{
     private $data;
     private $errors;
 
@@ -39,7 +39,7 @@ class Validator {
     {
         $value = trim($value);
 
-        if(!isset($value) || is_null($value) || empty($value)) {
+        if (!isset($value) || is_null($value) || empty($value)) {
             switch ($name) {
                 case 'username':
                     $this->errors[$name][] = "Le nom d'utilisateur est requis.";

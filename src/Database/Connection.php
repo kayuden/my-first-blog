@@ -4,8 +4,8 @@ namespace Src\Database;
 
 use PDO;
 
-class Connection {
-    
+class Connection
+{    
     private $host;
     private $dbname;
     private $username;

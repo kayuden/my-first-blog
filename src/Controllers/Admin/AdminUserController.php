@@ -5,8 +5,8 @@ namespace Src\Controllers\Admin;
 use Src\Models\User;
 use Src\Controllers\Controller;
 
-class AdminUserController extends Controller{
-
+class AdminUserController extends Controller
+{
     public function getAdminUsers()
     {
         $this->isAdmin();
@@ -23,7 +23,7 @@ class AdminUserController extends Controller{
         $user = new User($this->connectDB());
         $result = $user->update($id, $_POST);
 
-        if ($result){
+        if ($result) {
             return header('Location: /my-first-blog/admin/users');
         }
     }
@@ -35,7 +35,7 @@ class AdminUserController extends Controller{
         $user = new User($this->connectDB());
         $result = $user->delete($id);
 
-        if ($result){
+        if ($result) {
             return header('Location: /my-first-blog/admin/users');
         }
     }

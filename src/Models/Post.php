@@ -2,15 +2,15 @@
 
 namespace Src\Models;
 
-class Post extends Model {
-
+class Post extends Model
+{
     public int $id;
     public int $author_id;
     public string $title;
     public string $chapo;
     public string $content;
 
-    protected  $table = 'posts';
+    protected $table = 'posts';
 
     public function getAllPosts(): array
     {
@@ -35,5 +35,16 @@ class Post extends Model {
     public function getSummary(): string
     {
         return substr($this->content, 0, 600) . '...';
+    }
+
+    public function capitalizeTitleFirstLetter(): string
+    {
+        $title = strtolower($this->title);
+
+        $title = preg_replace_callback('/\b[a-zéèêëàâäîïôöûüùÿç]+/i', function($matches) {
+            return ucfirst($matches[0]);
+        }, $title);
+
+        return $title;
     }
 }

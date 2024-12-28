@@ -4,8 +4,8 @@ namespace Src\Controllers;
 
 use Src\Database\Connection;
 
-abstract class Controller {
-
+abstract class Controller
+{
     protected $db;
 
     public function __construct(Connection $db)

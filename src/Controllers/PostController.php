@@ -5,8 +5,8 @@ namespace Src\Controllers;
 use Src\Models\Post;
 use Src\Models\Comment;
 
-class PostController extends Controller {
-
+class PostController extends Controller
+{
     public function homepage()
     {
         $post = new Post($this->connectDB());

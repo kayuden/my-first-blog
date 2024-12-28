@@ -4,8 +4,8 @@ namespace Src\Models;
 
 use DateTime;
 
-class Comment extends Model {
-
+class Comment extends Model
+{
     public int $id;
     public int $author_id;
     public int $post_id;
