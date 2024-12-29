@@ -8,16 +8,16 @@ use Src\Controllers\Controller;
 
 class AdminUserController extends Controller
 {
-    public function getAdminUsers()
+    public function getAdminUsers(): void
     {
         $this->isAdmin();
 
         $users = (new User($this->connectDB()))->getAll();
 
-        return $this->view('admin/user/index', compact('users'));
+        $this->view('admin/user/index', compact('users'));
     }
 
-    public function update(int $id)
+    public function update(int $id): void
     {
         $this->isAdmin();
 
@@ -25,11 +25,11 @@ class AdminUserController extends Controller
         $result = $admin->updateUser($id, $_POST);
 
         if ($result) {
-            return header('Location: /my-first-blog/admin/users');
+            header('Location: /my-first-blog/admin/users');
         }
     }
 
-    public function delete(int $id)
+    public function delete(int $id): void
     {
         $this->isAdmin();
         
@@ -37,7 +37,7 @@ class AdminUserController extends Controller
         $result = $admin->delete($id);
 
         if ($result) {
-            return header('Location: /my-first-blog/admin/users');
+            header('Location: /my-first-blog/admin/users');
         }
     }
 }

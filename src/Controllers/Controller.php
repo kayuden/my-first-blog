@@ -4,6 +4,8 @@ namespace Src\Controllers;
 
 use Src\Database\Connection;
 
+require_once '../Config/Config.php';
+
 abstract class Controller
 {
     protected $db;
@@ -34,14 +36,14 @@ abstract class Controller
         return $this->db;
     }
 
-    protected function isAdmin(): bool
+    protected function isAdmin(): ?bool
     {
         if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === 1) {
             return true;
         } elseif ($_SESSION['isAdmin'] === 0) {
-            return header('Location: /my-first-blog');
+            header('Location: /my-first-blog');
         } else {
-            return header('Location: /my-first-blog/login');
+            header('Location: /my-first-blog/login');
         }
     }
 }

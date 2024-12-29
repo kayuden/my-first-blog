@@ -4,7 +4,7 @@ namespace Src\Controllers;
 
 class ContactController extends Controller
 {
-    public function sendMail()
+    public function sendMail(): void
     {
         //collect POST values
         $username = htmlspecialchars($_POST['username']);
@@ -18,7 +18,7 @@ class ContactController extends Controller
         $headers = "From: $email";
 
         if (mail($to, $subject, $body, $headers)) {
-            return header('Location: /my-first-blog?success_mail=true');
+            header('Location: /my-first-blog?success_mail=true');
         }
     }
 }

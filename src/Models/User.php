@@ -12,7 +12,7 @@ class User extends Model
 
     protected $table = 'users';
 
-    public function getByUsername(string $username): User
+    public function getByUsername(string $username): User|bool
     {
         return $this->query("SELECT * FROM {$this->table} WHERE username = ?", [$username], true);
     }
