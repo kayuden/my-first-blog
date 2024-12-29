@@ -29,12 +29,12 @@ abstract class Controller
         }
     }
 
-    protected function connectDB()
+    protected function connectDB(): Connection
     {
         return $this->db;
     }
 
-    protected function isAdmin()
+    protected function isAdmin(): bool
     {
         if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === 1) {
             return true;

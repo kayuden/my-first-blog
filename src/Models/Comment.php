@@ -25,7 +25,7 @@ class Comment extends Model
         ", [$post_id]);
     }
 
-    public function getUnvalidatedComments()
+    public function getUnvalidatedComments(): ?array
     {
         return $this->query(
         "SELECT 
@@ -39,12 +39,12 @@ class Comment extends Model
         WHERE c.is_validated = 0");
     }
 
-    public function validate(int $id)
+    public function validate(int $id): bool
     {
         return $this->query("UPDATE comments SET is_validated = 1 WHERE id = {$id}");
     }
 
-    public function create(string $author_id, string $post_id, string $content)
+    public function create(string $author_id, string $post_id, string $content): ?string
     {
         $stmt = $this->db->getPDO()->prepare("INSERT INTO comments (author_id,post_id,content) VALUES (?, ?, ?)");
         return $stmt->execute([$author_id,$post_id,$content]);

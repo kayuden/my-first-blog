@@ -29,7 +29,7 @@ class Route
         }
     }
 
-    public function execute()
+    public function execute(): mixed
     {
         $params = explode('@', $this->action);
         $controller = new $params[0](new Connection(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD));
