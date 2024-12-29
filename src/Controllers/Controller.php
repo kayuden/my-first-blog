@@ -17,15 +17,21 @@ abstract class Controller
         $this->db = $db;
     }
 
+    public static function getViewsPath(): string
+    {
+        return dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR;
+    }
+
     protected function view(string $path, array $params = null): void
     {
         ob_start();
-            require VIEWS . $path . '.php';
-            $content = ob_get_clean();
+        require self::getViewsPath() . $path . '.php';
+        $content = ob_get_clean();
+
         if (strpos($path, "admin") !== false) {
-            require VIEWS . 'layout_admin.php';
+            require self::getViewsPath() . 'layout_admin.php';
         } else {
-            require VIEWS . 'layout.php';
+            require self::getViewsPath() . 'layout.php';
         }
     }
 

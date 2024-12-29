@@ -4,6 +4,7 @@ namespace Src\Exceptions;
 
 use Exception;
 use Throwable;
+use Src\Controllers\Controller;
 
 class NotFoundException extends Exception
 {
@@ -15,6 +16,6 @@ class NotFoundException extends Exception
     public function error404(): void
     {
         http_response_code(404);
-        require VIEWS . 'errors/error404.php';
+        require Controller::getViewsPath() . 'errors/error404.php';
     }
 }
