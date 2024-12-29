@@ -12,12 +12,12 @@ class User extends Model
 
     protected $table = 'users';
 
-    public function getByUsername(string $username)
+    public function getByUsername(string $username): User|bool
     {
         return $this->query("SELECT * FROM {$this->table} WHERE username = ?", [$username], true);
     }
 
-    public function createUser(string $username, string $email, string $password)
+    public function createUser(string $username, string $email, string $password): bool
     {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $this->db->getPDO()->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");

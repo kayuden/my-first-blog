@@ -3,7 +3,7 @@
 <?php endif ?>
 
 <?php if (isset($_GET['success_register'])): ?>
-    <div class="alert alert-success text-center">Inscription validée ! <a href="">Se connecter</a></div>
+    <div class="alert alert-success text-center">Inscription validée ! <a href="/my-first-blog/login">Se connecter</a></div>
 <?php endif ?>
 
 <?php if (isset($_GET['success_mail'])): ?>

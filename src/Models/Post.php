@@ -12,7 +12,7 @@ class Post extends Model
 
     protected $table = 'posts';
 
-    public function getAllPosts(): array
+    public function getAllPosts(): ?array
     {
         return $this->query("
         SELECT p.*, u.username 
@@ -48,7 +48,7 @@ class Post extends Model
         return $title;
     }
 
-    public function create(string $author_id, string $title, string $chapo, string $content)
+    public function create(string $author_id, string $title, string $chapo, string $content): bool
     {
         $stmt = $this->db->getPDO()->prepare("INSERT INTO posts (author_id,title,chapo,content) VALUES (?, ?, ?, ?)");
         return $stmt->execute([$author_id,$title,$chapo,$content]);

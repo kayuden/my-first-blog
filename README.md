@@ -37,10 +37,10 @@ mv my-first-blog /path-to-xampp/htdocs
 ### 4. Configure Environment Variables
 Edit the `public/index.php` file to match your local environment:
 ```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'my_first_blog');
-define('DB_USER', 'your-database-username');
-define('DB_PASS', 'your-database-password');
+define("DB_HOST", "localhost");
+define("DB_NAME", "my_first_blog");
+define("DB_USER", "root");
+define("DB_PASSWORD", "");
 ```
 
 ### 5. Run the Application

@@ -8,16 +8,16 @@ use Src\Controllers\Controller;
 
 class AdminCommentController extends Controller
 {
-    public function getAdminComments()
+    public function getAdminComments(): void
     {
         $this->isAdmin();
 
         $comments = (new Comment($this->connectDB()))->getUnvalidatedComments();
 
-        return $this->view('admin/comment/index', compact('comments'));
+        $this->view('admin/comment/index', compact('comments'));
     }
 
-    public function validate(int $id)
+    public function validate(int $id): void
     {
         $this->isAdmin();
 
@@ -25,11 +25,11 @@ class AdminCommentController extends Controller
         $result = $admin->validateComment($id);
 
         if ($result) {
-            return header('Location: /my-first-blog/admin/comments');
+            header('Location: /my-first-blog/admin/comments');
         }
     }
 
-    public function delete(int $id)
+    public function delete(int $id): void
     {
         $this->isAdmin();
         
@@ -37,7 +37,7 @@ class AdminCommentController extends Controller
         $result = $admin->deleteComment($id);
 
         if ($result) {
-            return header('Location: /my-first-blog/admin/comments');
+            header('Location: /my-first-blog/admin/comments');
         }
     }
 }

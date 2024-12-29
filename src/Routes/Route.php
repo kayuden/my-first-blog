@@ -9,6 +9,10 @@ class Route
     public $path;
     public $action;
     public $matches;
+    const DB_HOST = 'localhost';
+    const DB_NAME = 'my_first_blog';
+    const DB_USER = 'root';
+    const DB_PASSWORD = '';
 
     public function __construct(string $path, string $action)
     {
@@ -16,7 +20,7 @@ class Route
         $this->action = $action;
     }
 
-    public function matches(string $url) // $url = posts/1 et $this->path = posts/:id
+    public function matches(string $url): bool // $url = posts/1 et $this->path = posts/:id
     {
         $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path); // $path = posts/([^/]+)
         $pathToMatch = "#^$path$#"; // "#^/posts/([^/]+)$#"
@@ -29,10 +33,10 @@ class Route
         }
     }
 
-    public function execute()
+    public function execute(): mixed
     {
         $params = explode('@', $this->action);
-        $controller = new $params[0](new Connection(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD));
+        $controller = new $params[0](new Connection(self::DB_HOST, self::DB_NAME, self::DB_USER, self::DB_PASSWORD));
         $method = $params[1];
 
         return isset($this->matches[1]) ? $controller->$method($this->matches[1]) : $controller->$method();

@@ -4,7 +4,6 @@ use Src\Routes\Router;
 use Src\Exceptions\NotFoundException;
 
 require '../vendor/autoload.php';
-require_once '../src/Config/Config.php';
 
 $router = new Router($_GET['url']);
 

@@ -39,7 +39,7 @@ abstract class Model
         }
     }
 
-    public function update(int $id, array $data)
+    public function update(int $id, array $data): bool
     {
         $sqlRequestPart = "";
         $i = 1;

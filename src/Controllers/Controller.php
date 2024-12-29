@@ -17,31 +17,37 @@ abstract class Controller
         $this->db = $db;
     }
 
-    protected function view(string $path, array $params = null)
+    public static function getViewsPath(): string
+    {
+        return dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR;
+    }
+
+    protected function view(string $path, array $params = null): void
     {
         ob_start();
-            require VIEWS . $path . '.php';
-            $content = ob_get_clean();
+        require self::getViewsPath() . $path . '.php';
+        $content = ob_get_clean();
+
         if (strpos($path, "admin") !== false) {
-            require VIEWS . 'layout_admin.php';
+            require self::getViewsPath() . 'layout_admin.php';
         } else {
-            require VIEWS . 'layout.php';
+            require self::getViewsPath() . 'layout.php';
         }
     }
 
-    protected function connectDB()
+    protected function connectDB(): Connection
     {
         return $this->db;
     }
 
-    protected function isAdmin()
+    protected function isAdmin(): ?bool
     {
         if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === 1) {
             return true;
         } elseif ($_SESSION['isAdmin'] === 0) {
-            return header('Location: /my-first-blog');
+            header('Location: /my-first-blog');
         } else {
-            return header('Location: /my-first-blog/login');
+            header('Location: /my-first-blog/login');
         }
     }
 }

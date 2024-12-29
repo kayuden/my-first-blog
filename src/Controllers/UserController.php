@@ -7,12 +7,12 @@ use Src\Validation\Validator;
 
 class UserController extends Controller
 {
-    public function register()
+    public function register(): void
     {
-        return $this->view('authentification/register');
+        $this->view('authentification/register');
     }
 
-    public function registerPost() //register a new user
+    public function registerPost(): void //register a new user
     {
         $validator = new Validator($_POST);
         $errors = $validator->validate([
@@ -26,7 +26,7 @@ class UserController extends Controller
         if ($errors) {
             $_SESSION['errors'][] = $errors;
             header('Location: /my-first-blog/register');
-            exit;
+            return;
         }
 
         $user = new User($this->connectDB());
@@ -34,16 +34,16 @@ class UserController extends Controller
         $result = $user->createUser($_POST['username'],$_POST['email'],$_POST['password']);
 
         if ($result) {
-            return header('Location: /my-first-blog?success_register=true');
+            header('Location: /my-first-blog?success_register=true');
         }
     }
 
-    public function login()
+    public function login(): void
     {
-        return $this->view('authentification/login');
+        $this->view('authentification/login');
     }
 
-    public function loginPost()
+    public function loginPost(): void
     {
         $validator = new Validator($_POST);
         $errors = $validator->validate([
@@ -54,7 +54,7 @@ class UserController extends Controller
         if ($errors) {
             $_SESSION['errors'][] = $errors;
             header('Location: /my-first-blog/login');
-            exit;
+            return;
         }
 
         $user = (new User($this->connectDB()))->getByUsername($_POST['username']);
@@ -64,18 +64,18 @@ class UserController extends Controller
             $_SESSION['user_id'] = (int) $user->id;
             $_SESSION['username'] = (string) $user->username;
 
-            return header('Location: /my-first-blog?success=true');
+            header('Location: /my-first-blog?success=true');
             
 
         } else {
-            return header('Location: /my-first-blog/login?error=true');
+            header('Location: /my-first-blog/login?error=true');
         }
     }
 
-    public function logout()
+    public function logout(): void
     {
         session_destroy();
 
-        return header('Location: /my-first-blog');
+        header('Location: /my-first-blog');
     }
 }

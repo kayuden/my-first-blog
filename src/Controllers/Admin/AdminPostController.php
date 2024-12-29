@@ -8,23 +8,23 @@ use Src\Controllers\Controller;
 
 class AdminPostController extends Controller
 {
-    public function getAdminPosts()
+    public function getAdminPosts(): void
     {
         $this->isAdmin();
 
         $posts = (new Post($this->connectDB()))->getAllPosts();
 
-        return $this->view('admin/post/index', compact('posts'));
+        $this->view('admin/post/index', compact('posts'));
     }
 
-    public function create()
+    public function create(): void
     {
         $this->isAdmin();
 
-        return $this->view('admin/post/form');
+        $this->view('admin/post/form');
     }
     
-    public function createPost()
+    public function createPost(): void
     {
         $this->isAdmin();
 
@@ -32,20 +32,20 @@ class AdminPostController extends Controller
         $result = $admin->createPost($_POST);
 
         if ($result) {
-            return header('Location: /my-first-blog/admin/posts');
+            header('Location: /my-first-blog/admin/posts');
         }
     }
 
-    public function edit(int $id)
+    public function edit(int $id): void
     {
         $this->isAdmin();
 
         $post = (new Post($this->connectDB()))->findById($id);
         
-        return $this->view('admin/post/form', compact('post'));
+        $this->view('admin/post/form', compact('post'));
     }
 
-    public function update(int $id)
+    public function update(int $id): void
     {
         $this->isAdmin();
 
@@ -53,11 +53,11 @@ class AdminPostController extends Controller
         $result = $admin->updatePost($id, $_POST);
 
         if ($result) {
-            return header('Location: /my-first-blog/admin/posts');
+            header('Location: /my-first-blog/admin/posts');
         }
     }
 
-    public function delete(int $id)
+    public function delete(int $id): void
     {
         $this->isAdmin();
         
@@ -65,7 +65,7 @@ class AdminPostController extends Controller
         $result = $admin->deletePost($id);
 
         if ($result) {
-            return header('Location: /my-first-blog/admin/posts');
+            header('Location: /my-first-blog/admin/posts');
         }
     }
 }

@@ -35,7 +35,7 @@ class Validator
         return $this->getErrors();
     }
 
-    private function required(string $name, string $value)
+    private function required(string $name, string $value): void
     {
         $value = trim($value);
 
@@ -54,7 +54,7 @@ class Validator
         }
     }
 
-    private function min(string $name, string $value, string $rule)
+    private function min(string $name, string $value, string $rule): void
     {
         preg_match_all('/(\d+)/', $rule, $matches);
         $limit = (int) $matches[0][0];
@@ -74,7 +74,7 @@ class Validator
         }
     }
 
-    private function confirmation(string $name, string $value1, string $value2)
+    private function confirmation(string $name, string $value1, string $value2): void
     {
         if ($value1 !== $value2) {
             switch ($name) {
