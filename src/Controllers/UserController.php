@@ -26,7 +26,7 @@ class UserController extends Controller
         if ($errors) {
             $_SESSION['errors'][] = $errors;
             header('Location: /my-first-blog/register');
-            exit;
+            return;
         }
 
         $user = new User($this->connectDB());
@@ -54,7 +54,7 @@ class UserController extends Controller
         if ($errors) {
             $_SESSION['errors'][] = $errors;
             header('Location: /my-first-blog/login');
-            exit;
+            return;
         }
 
         $user = (new User($this->connectDB()))->getByUsername($_POST['username']);

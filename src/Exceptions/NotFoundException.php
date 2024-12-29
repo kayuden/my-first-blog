@@ -5,8 +5,6 @@ namespace Src\Exceptions;
 use Exception;
 use Throwable;
 
-require_once '../Config/Config.php';
-
 class NotFoundException extends Exception
 {
     public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null)

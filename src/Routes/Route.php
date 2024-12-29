@@ -16,7 +16,7 @@ class Route
         $this->action = $action;
     }
 
-    public function matches(string $url) // $url = posts/1 et $this->path = posts/:id
+    public function matches(string $url): bool // $url = posts/1 et $this->path = posts/:id
     {
         $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path); // $path = posts/([^/]+)
         $pathToMatch = "#^$path$#"; // "#^/posts/([^/]+)$#"

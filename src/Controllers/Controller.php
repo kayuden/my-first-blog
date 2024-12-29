@@ -4,8 +4,6 @@ namespace Src\Controllers;
 
 use Src\Database\Connection;
 
-require_once '../Config/Config.php';
-
 abstract class Controller
 {
     protected $db;
@@ -19,7 +17,7 @@ abstract class Controller
         $this->db = $db;
     }
 
-    protected function view(string $path, array $params = null)
+    protected function view(string $path, array $params = null): void
     {
         ob_start();
             require VIEWS . $path . '.php';
