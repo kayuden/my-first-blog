@@ -10,7 +10,7 @@ class Route
     public $action;
     public $matches;
 
-    public function __construct($path, $action)
+    public function __construct(string $path, string $action)
     {
         $this->path = trim($path, '/');
         $this->action = $action;
