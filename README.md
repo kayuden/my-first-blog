@@ -8,11 +8,11 @@ This project involves the development of a professional blog in PHP, structured 
 
 To run this project, ensure you have the following installed:
 
-- **XAMPP** or another local web server (Apache, MySQL, PHP)
-- **Git** for cloning the repository
+- [**XAMPP**](https://www.apachefriends.org/fr/download.html) or another local web server (Apache, MySQL, PHP)
+- [**Git**](https://git-scm.com/downloads) for cloning the repository
 - A modern web browser
 
-## Installation
+## Installation (with XAMPP)
 
 Follow these steps to set up the project on your local environment:
 
@@ -35,12 +35,12 @@ mv my-first-blog /path-to-xampp/htdocs
    - Import the `my_first_blog.sql` file using phpMyAdmin.
 
 ### 4. Configure Environment Variables
-Edit the `public/index.php` file to match your local environment:
+Edit the `config/Config.php` file to match your local environment:
 ```php
-define("DB_HOST", "localhost");
-define("DB_NAME", "my_first_blog");
-define("DB_USER", "root");
-define("DB_PASSWORD", "");
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'my_first_blog');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
 ```
 
 ### 5. Run the Application
@@ -52,6 +52,9 @@ define("DB_PASSWORD", "");
    ```
    http://localhost/my-first-blog/login
    ```
+3. Admin account login details:
+   - Username: KaydenB
+   - Password: administration123
 
 ## Contact
 

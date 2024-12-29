@@ -4,6 +4,7 @@ use Src\Routes\Router;
 use Src\Exceptions\NotFoundException;
 
 require '../vendor/autoload.php';
+require_once '../config/Config.php';
 
 $router = new Router($_GET['url']);
 
@@ -21,9 +22,9 @@ $router->get('/login', 'Src\Controllers\UserController@login'); //login form
 $router->post('/login', 'Src\Controllers\UserController@loginPost'); //connexion and redirection
 $router->get('/logout', 'Src\Controllers\UserController@logout'); //logout
 
-/*partie admin*/
+/*admin part*/
 
-//gestion des posts
+//posts management
 $router->get('/admin/posts', 'Src\Controllers\Admin\AdminPostController@getAdminPosts'); //list posts
 $router->get('/admin/posts/create', 'Src\Controllers\Admin\AdminPostController@create'); //post creation form
 $router->post('/admin/posts/create', 'Src\Controllers\Admin\AdminPostController@createPost'); //create a new post in DB
@@ -31,12 +32,12 @@ $router->post('/admin/posts/delete/:id', 'Src\Controllers\Admin\AdminPostControl
 $router->get('/admin/posts/edit/:id', 'Src\Controllers\Admin\AdminPostController@edit'); //post modification form
 $router->post('/admin/posts/edit/:id', 'Src\Controllers\Admin\AdminPostController@update'); //modify a post in DB
 
-//gestion des commentaires
+//comments management
 $router->get('/admin/comments', 'Src\Controllers\Admin\AdminCommentController@getAdminComments'); //liste les commentaires à valider
 $router->get('/admin/comments/validate/:id', 'Src\Controllers\Admin\AdminCommentController@validate'); //validate a comment in DB
 $router->post('/admin/comments/delete/:id', 'Src\Controllers\Admin\AdminCommentController@delete'); //delete a comment in DB
 
-//gestion des utilisateurs
+//users management
 $router->get('/admin/users', 'Src\Controllers\Admin\AdminUserController@getAdminUsers'); //list of users
 $router->post('/admin/users/changerole/:id', 'Src\Controllers\Admin\AdminUserController@update'); //validate a user in DB
 $router->post('/admin/users/delete/:id', 'Src\Controllers\Admin\AdminUserController@delete'); //delete a user in DB

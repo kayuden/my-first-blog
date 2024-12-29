@@ -9,7 +9,11 @@ class UserController extends Controller
 {
     public function register(): void
     {
-        $this->view('authentification/register');
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /my-first-blog');
+        } else {
+            $this->view('authentification/register');
+        }
     }
 
     public function registerPost(): void //register a new user
@@ -40,7 +44,11 @@ class UserController extends Controller
 
     public function login(): void
     {
-        $this->view('authentification/login');
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /my-first-blog');
+        } else {
+            $this->view('authentification/login');
+        }
     }
 
     public function loginPost(): void
