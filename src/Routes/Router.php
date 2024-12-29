@@ -9,7 +9,7 @@ class Router
     public $url;
     public $routes = [];
 
-    public function __construct($url)
+    public function __construct(string $url)
     {
         $this->url = trim($url, '/');
     }

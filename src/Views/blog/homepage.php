@@ -13,7 +13,7 @@
   <!-- Section présentation -->
   <section class="text-center py-5">
     <div class="container">
-      <img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'kb.png'?>" alt="Photo de Profil" class="rounded-circle mb-4" style="width: 150px; height: 150px;">
+      <img src="/my-first-blog/public/img/kb.png" alt="Photo de Profil" class="rounded-circle mb-4" style="width: 150px; height: 150px;">
       <h1>Kayden Bartholomot</h1>
       <p class="lead">Le PHP n'a plus aucun secret pour moi !</p>
     </div>
@@ -35,7 +35,7 @@
         <a href="/my-first-blog/posts" class="btn btn-secondary">
             Découvrir les articles
         </a>
-        <a href="<?= SCRIPTS . 'pdf' . DIRECTORY_SEPARATOR . 'CV_bartholomot_kayden.pdf'?>" download="CV_bartholomot_kayden.pdf" class="btn btn-primary">
+        <a href="/my-first-blog/public/pdf/CV_bartholomot_kayden.pdf" download="CV_bartholomot_kayden.pdf" class="btn btn-primary">
             Télécharger mon CV
         </a>
       </div>
@@ -72,11 +72,11 @@
   <footer class="bg-dark text-white py-4">
     <div class="container text-center">
         <p>Suivez-moi sur :</p>
-        <a href="https://github.com/kayuden" class="text-white mx-2" target="_blank"><img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'github-brands-solid.svg'?>" alt="Icône GitHub" width="30"></a>
-        <a href="https://www.linkedin.com/in/kayden-bartholomot/" class="text-white mx-2" target="_blank"><img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'linkedin-brands-solid.svg'?>" alt="Icône LinkedIn" width="30"></a>
-        <a href="https://x.com" class="text-white mx-2" target="_blank"><img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'x-twitter-brands-solid.svg'?>" alt="Icône X" width="30"></a>
-        <a href="https://www.instagram.com" class="text-white mx-2" target="_blank"><img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'instagram-brands-solid.svg'?>" alt="Icône Instagram" width="30"></a>
-        <a href="https://www.facebook.com" class="text-white mx-2" target="_blank"><img src="<?= SCRIPTS . 'img' . DIRECTORY_SEPARATOR . 'facebook-brands-solid.svg'?>" alt="Icône Facebook" width="30"></a>
+        <a href="https://github.com/kayuden" class="text-white mx-2" target="_blank"><img src="/my-first-blog/public/img/github-brands-solid.svg" alt="Icône GitHub" width="30"></a>
+        <a href="https://www.linkedin.com/in/kayden-bartholomot/" class="text-white mx-2" target="_blank"><img src="/my-first-blog/public/img/linkedin-brands-solid.svg" alt="Icône LinkedIn" width="30"></a>
+        <a href="https://x.com" class="text-white mx-2" target="_blank"><img src="/my-first-blog/public/img/x-twitter-brands-solid.svg" alt="Icône X" width="30"></a>
+        <a href="https://www.instagram.com" class="text-white mx-2" target="_blank"><img src="/my-first-blog/public/img/instagram-brands-solid.svg" alt="Icône Instagram" width="30"></a>
+        <a href="https://www.facebook.com" class="text-white mx-2" target="_blank"><img src="/my-first-blog/public/img/facebook-brands-solid.svg" alt="Icône Facebook" width="30"></a>
     </div>
   </footer>
   <section class="bg-black text-white text-center py-2">

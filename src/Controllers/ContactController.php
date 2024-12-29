@@ -10,15 +10,7 @@ class ContactController extends Controller
         $username = htmlspecialchars($_POST['username']);
         $email = htmlspecialchars($_POST['email']);
         $message = htmlspecialchars($_POST['message'],ENT_SUBSTITUTE | ENT_HTML401);
-
-        if (empty($username) || empty($email) || empty($message)) {
-            die("Tous les champs sont obligatoires.");
-        }
-
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            die("L'adresse e-mail n'est pas valide.");
-        }
-
+        
         //e-mail formatting
         $to = "ablazelef@gmail.com";
         $subject = "Nouveau message de $username";
