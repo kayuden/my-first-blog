@@ -23,11 +23,4 @@ class User extends Model
         $stmt = $this->db->getPDO()->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
         return $stmt->execute([$username, $email, $hashedPassword]);
     }
-
-    static function login()
-    {
-        //vérification username / mot de passe
-        //si correspond pas renvoie une erreur sinon renvoie l'instance de l'objet
-        //vérifie le statut de l'utilisateur et renvoie une instance d'User ou d'Admin
-    }
 }

@@ -6,7 +6,7 @@ class ContactController extends Controller
 {
     public function sendMail()
     {
-        //récupération des valeurs post
+        //collect POST values
         $username = htmlspecialchars($_POST['username']);
         $email = htmlspecialchars($_POST['email']);
         $message = htmlspecialchars($_POST['message'],ENT_SUBSTITUTE | ENT_HTML401);
@@ -19,7 +19,7 @@ class ContactController extends Controller
             die("L'adresse e-mail n'est pas valide.");
         }
 
-        // mise en forme e-mail
+        //e-mail formatting
         $to = "ablazelef@gmail.com";
         $subject = "Nouveau message de $username";
         $body = "Username: $username\nE-mail: $email\n\nMessage:\n$message";

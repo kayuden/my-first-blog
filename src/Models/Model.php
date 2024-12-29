@@ -39,31 +39,6 @@ abstract class Model
         }
     }
 
-    public function create(array $data)
-    {
-        if (isset($_SESSION['user_id'])) {
-            $data['author_id'] = $_SESSION['user_id'];
-        }
-
-        if (isset($_SESSION['post_id'])) {
-            $data['post_id'] = $_SESSION['post_id'];
-        }
-
-        $firstParenthesis = "";
-        $secondParenthesis = "";
-        $i = 1;
-
-        foreach ($data as $key => $value) {
-            $comma = $i === count($data) ? "" : ", ";
-            $firstParenthesis .= "{$key}{$comma}";
-            $secondParenthesis .= ":{$key}{$comma}";
-            $i++;
-        }
-
-        return $this->query("INSERT INTO {$this->table} ($firstParenthesis)
-        VALUES ($secondParenthesis)", $data);
-    }
-
     public function update(int $id, array $data)
     {
         $sqlRequestPart = "";

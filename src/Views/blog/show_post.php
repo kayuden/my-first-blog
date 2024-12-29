@@ -6,8 +6,8 @@
     <div>
         <small><?= $params['post']->getModificationDate() === "" ? "Publié le " . $params['post']->getCreationDate() : "Modifié le " . $params['post']->getModificationDate() ?></small>
     </div>
-    <h1><?= $params['post']->capitalizeTitleFirstLetter() ?></h1>
-    <h2>Par <?= $params['post']->username ?></h2>
+    <h1 class="text-primary"><?= $params['post']->capitalizeTitleFirstLetter() ?></h1>
+    <p class="fw-bold">De <?= $params['post']->username ?></p>
     <p class="font-italic mt-3"><?= $params['post']->chapo ?></p>
     <p><?= $params['post']->content ?></p>
 
@@ -36,7 +36,7 @@
                 <?php foreach ($params['comment'] as $comment): ?>
                     <div class="card mb-3">
                         <div class="card-body">
-                            <small class="text-info"><span class="text-primary font-weight-bold"><?= $comment->username ?></span> <?= $comment->getCreationDate() ?></small>
+                            <small class="text-secondary"><span class="text-black fw-bold"><?= $comment->username ?></span> <?= $comment->getCreationDate() ?></small>
                             <p><?= $comment->content ?></p>
                         </div>
                     </div>

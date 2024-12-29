@@ -2,6 +2,7 @@
 
 namespace Src\Controllers\Admin;
 
+use Src\Models\Admin;
 use Src\Models\Comment;
 use Src\Controllers\Controller;
 
@@ -20,8 +21,8 @@ class AdminCommentController extends Controller
     {
         $this->isAdmin();
 
-        $comment = new Comment($this->connectDB());
-        $result = $comment->validate($id);
+        $admin = new Admin($this->connectDB());
+        $result = $admin->validateComment($id);
 
         if ($result) {
             return header('Location: /my-first-blog/admin/comments');
@@ -32,8 +33,8 @@ class AdminCommentController extends Controller
     {
         $this->isAdmin();
         
-        $comment = new Comment($this->connectDB());
-        $result = $comment->delete($id);
+        $admin = new Admin($this->connectDB());
+        $result = $admin->deleteComment($id);
 
         if ($result) {
             return header('Location: /my-first-blog/admin/comments');

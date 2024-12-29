@@ -3,6 +3,7 @@
 namespace Src\Controllers\Admin;
 
 use Src\Models\User;
+use Src\Models\Admin;
 use Src\Controllers\Controller;
 
 class AdminUserController extends Controller
@@ -20,8 +21,8 @@ class AdminUserController extends Controller
     {
         $this->isAdmin();
 
-        $user = new User($this->connectDB());
-        $result = $user->update($id, $_POST);
+        $admin = new Admin($this->connectDB());
+        $result = $admin->updateUser($id, $_POST);
 
         if ($result) {
             return header('Location: /my-first-blog/admin/users');
@@ -32,8 +33,8 @@ class AdminUserController extends Controller
     {
         $this->isAdmin();
         
-        $user = new User($this->connectDB());
-        $result = $user->delete($id);
+        $admin = new Admin($this->connectDB());
+        $result = $admin->delete($id);
 
         if ($result) {
             return header('Location: /my-first-blog/admin/users');

@@ -20,22 +20,22 @@
             <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/my-first-blog">Accueil</a>
+                <a class="nav-link <?= $_SERVER['REQUEST_URI'] === '/my-first-blog/' ? 'active' : '' ?>" aria-current="page" href="/my-first-blog">Accueil</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/my-first-blog/posts">Les articles</a>
+                <a class="nav-link <?= $_SERVER['REQUEST_URI'] === '/my-first-blog/posts' ? 'active' : '' ?>" href="/my-first-blog/posts">Les articles</a>
                 </li>
-                <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
-                    <?php if ($_SESSION['isAdmin'] === 1): ?> <!-- si admin -->
+                <?php if (isset($_SESSION['user_id'])): ?> <!-- if connected-->
+                    <?php if ($_SESSION['isAdmin'] === 1): ?> <!-- if admin -->
                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="/my-first-blog/admin/posts">Partie admin</a>
+                            <a class="nav-link text-danger " href="/my-first-blog/admin/posts">Partie admin</a>
                         </li>
                     <?php endif ?>
                 <?php endif ?>
             </ul>
             <span class="navbar-text">
                 <ul class="navbar-nav ml-auto">
-                    <?php if (!isset($_SESSION['user_id'])): ?>  <!-- si déconnecté -->
+                    <?php if (!isset($_SESSION['user_id'])): ?>  <!-- if disconnected -->
                         <li class="nav-item">
                             <a class="btn btn-secondary text-white me-2 mb-2" href="/my-first-blog/register">Inscription</a>
                         </li>
@@ -43,7 +43,7 @@
                             <a class="btn btn-primary text-white" href="/my-first-blog/login">Connexion</a>
                         </li>
                     <?php endif ?>
-                    <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
+                    <?php if (isset($_SESSION['user_id'])): ?> <!-- if connected -->
                         <li class="nav-item">
                             <a class="btn btn-outline-danger" href="/my-first-blog/logout">Se déconnecter</a>
                         </li>

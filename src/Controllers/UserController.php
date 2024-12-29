@@ -12,7 +12,7 @@ class UserController extends Controller
         return $this->view('authentification/register');
     }
 
-    public function registerPost()
+    public function registerPost() //register a new user
     {
         $validator = new Validator($_POST);
         $errors = $validator->validate([

@@ -5,7 +5,6 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h2 class="text-primary"><?= $post->capitalizeTitleFirstLetter() ?></h2>
-                <p>Par <?= $post->username ?></p>
                 <small class="text-secondary"><?= $post->getModificationDate() === "" ? "Publié le " . $post->getCreationDate() : "Modifié le " . $post->getModificationDate() ?></small>
                 <p class="font-italic mt-3"><?= $post->chapo ?></p>
                 <p><?= $post->getSummary() ?></p>

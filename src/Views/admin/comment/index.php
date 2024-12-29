@@ -29,7 +29,7 @@
                         <td>
                             <a href="/my-first-blog/admin/comments/validate/<?= $comment->id ?>" class="btn btn-success">Valider</a>
                             <form action="/my-first-blog/admin/comments/delete/<?= $comment->id ?>" method="POST" class="d-inline" onsubmit="return confirm('Voulez-vous supprimer ce commentaire ?');">
-                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                <button type="submit" class="btn btn-danger">X</button>
                             </form>
                         </td>
                     </tr>

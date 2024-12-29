@@ -47,4 +47,10 @@ class Post extends Model
 
         return $title;
     }
+
+    public function create(string $author_id, string $title, string $chapo, string $content)
+    {
+        $stmt = $this->db->getPDO()->prepare("INSERT INTO posts (author_id,title,chapo,content) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$author_id,$title,$chapo,$content]);
+    }
 }

@@ -25,23 +25,23 @@
                 <li class="nav-item">
                 <a class="nav-link" href="/my-first-blog/posts">Les articles</a>
                 </li>
-                <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
-                    <?php if ($_SESSION['isAdmin'] === 1): ?> <!-- si admin -->
+                <?php if (isset($_SESSION['user_id'])): ?> <!-- if connected -->
+                    <?php if ($_SESSION['isAdmin'] === 1): ?> <!-- if admin -->
                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="/my-first-blog/admin/posts">Gestion des articles</a>
+                            <a class="nav-link <?= $_SERVER['REQUEST_URI'] === '/my-first-blog/admin/posts' ? 'text-danger-emphasis' : 'text-danger' ?>" href="/my-first-blog/admin/posts">Gestion des articles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="/my-first-blog/admin/comments">Gestion des commentaires</a>
+                            <a class="nav-link <?= $_SERVER['REQUEST_URI'] === '/my-first-blog/admin/comments' ? 'text-danger-emphasis' : 'text-danger' ?>" href="/my-first-blog/admin/comments">Gestion des commentaires</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="/my-first-blog/admin/users">Gestion des utilisateurs</a>
+                            <a class="nav-link <?= $_SERVER['REQUEST_URI'] === '/my-first-blog/admin/users' ? 'text-danger-emphasis' : 'text-danger' ?>" href="/my-first-blog/admin/users">Gestion des utilisateurs</a>
                         </li>
                     <?php endif ?>
                 <?php endif ?>
             </ul>
             <span class="navbar-text">
                 <ul class="navbar-nav ml-auto">
-                    <?php if (!isset($_SESSION['user_id'])): ?>  <!-- si déconnecté -->
+                    <?php if (!isset($_SESSION['user_id'])): ?>  <!-- if disconnected -->
                         <li class="nav-item">
                             <a class="btn btn-outline-secondary me-2 mb-2" href="/my-first-blog/register">Inscription</a>
                         </li>
@@ -49,7 +49,7 @@
                             <a class="btn btn-outline-primary" href="/my-first-blog/login">Connexion</a>
                         </li>
                     <?php endif ?>
-                    <?php if (isset($_SESSION['user_id'])): ?> <!-- si connecté -->
+                    <?php if (isset($_SESSION['user_id'])): ?> <!-- if connected -->
                         <li class="nav-item">
                             <a class="btn btn-outline-danger" href="/my-first-blog/logout">Se déconnecter</a>
                         </li>
