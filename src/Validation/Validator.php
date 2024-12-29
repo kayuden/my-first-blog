@@ -39,7 +39,7 @@ class Validator
     {
         $value = trim($value);
 
-        if (!isset($value) || is_null($value) || empty($value)) {
+        if (empty($value)) {
             switch ($name) {
                 case 'username':
                     $this->errors[$name][] = "Le nom d'utilisateur est requis.";

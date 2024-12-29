@@ -1,5 +1,7 @@
 {
     "name": "kai/my-first-blog",
+    "description": "OpenClassrooms - Project 5 - Create your first blog",
+    "license": "proprietary",
     "autoload": {
         "psr-4": {
             "Src\\": "src/"

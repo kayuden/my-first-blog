@@ -43,4 +43,10 @@ class Comment extends Model
     {
         return $this->query("UPDATE comments SET is_validated = 1 WHERE id = {$id}");
     }
+
+    public function create(string $author_id, string $post_id, string $content)
+    {
+        $stmt = $this->db->getPDO()->prepare("INSERT INTO comments (author_id,post_id,content) VALUES (?, ?, ?)");
+        return $stmt->execute([$author_id,$post_id,$content]);
+    }
 }
