@@ -50,7 +50,8 @@ class Post extends Model
 
     public function create(string $author_id, string $title, string $chapo, string $content): bool
     {
-        $stmt = $this->db->getPDO()->prepare("INSERT INTO posts (author_id,title,chapo,content) VALUES (?, ?, ?, ?)");
+        $stmt = $this->db->getPDO()->prepare("INSERT INTO posts (author_id,title,chapo,content) 
+        VALUES (?, ?, ?, ?)");
         return $stmt->execute([$author_id,$title,$chapo,$content]);
     }
 }

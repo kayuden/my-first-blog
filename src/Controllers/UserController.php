@@ -16,7 +16,8 @@ class UserController extends Controller
         }
     }
 
-    public function registerPost(): void //register a new user
+    // Register a new user
+    public function registerPost(): void 
     {
         $validator = new Validator($_POST);
         $errors = $validator->validate([
@@ -35,7 +36,12 @@ class UserController extends Controller
 
         $user = new User($this->connectDB());
 
-        $result = $user->createUser($_POST['username'],$_POST['email'],$_POST['password']);
+        $result = $user->createUser(
+        htmlspecialchars($_POST['username'],ENT_SUBSTITUTE | ENT_HTML401),
+        htmlspecialchars($_POST['email'],ENT_SUBSTITUTE | ENT_HTML401),
+        htmlspecialchars($_POST['password'],ENT_SUBSTITUTE | ENT_HTML401)
+        );
+        
 
         if ($result) {
             header('Location: /my-first-blog?success_register=true');
@@ -65,8 +71,13 @@ class UserController extends Controller
             return;
         }
 
-        $user = (new User($this->connectDB()))->getByUsername($_POST['username']);
-
+        $user = (new User($this->connectDB()))->getByUsername(
+            htmlspecialchars(
+                $_POST['username'],
+                ENT_SUBSTITUTE | ENT_HTML401
+            )
+        );
+        
         if (password_verify($_POST['password'], $user->password)) {
             $_SESSION['isAdmin'] = (int) $user->is_admin;
             $_SESSION['user_id'] = (int) $user->id;

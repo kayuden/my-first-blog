@@ -44,7 +44,7 @@
     </head>
     <body>
         <div class="container error-container">
-            <h1>404</h1>
+            <h1>404 Not Found</h1>
             <p>Désolé, la page que vous cherchez n'existe pas.</p>
             <a href="/my-first-blog" class="btn-custom">Retour à l'accueil</a>
         </div>
