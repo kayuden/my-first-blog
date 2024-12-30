@@ -9,10 +9,15 @@ class UserController extends Controller
 {
     public function register(): void
     {
-        $this->view('authentification/register');
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /my-first-blog');
+        } else {
+            $this->view('authentification/register');
+        }
     }
 
-    public function registerPost(): void //register a new user
+    // Register a new user
+    public function registerPost(): void 
     {
         $validator = new Validator($_POST);
         $errors = $validator->validate([
@@ -31,7 +36,12 @@ class UserController extends Controller
 
         $user = new User($this->connectDB());
 
-        $result = $user->createUser($_POST['username'],$_POST['email'],$_POST['password']);
+        $result = $user->createUser(
+        htmlspecialchars($_POST['username'],ENT_SUBSTITUTE | ENT_HTML401),
+        htmlspecialchars($_POST['email'],ENT_SUBSTITUTE | ENT_HTML401),
+        htmlspecialchars($_POST['password'],ENT_SUBSTITUTE | ENT_HTML401)
+        );
+        
 
         if ($result) {
             header('Location: /my-first-blog?success_register=true');
@@ -40,7 +50,11 @@ class UserController extends Controller
 
     public function login(): void
     {
-        $this->view('authentification/login');
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /my-first-blog');
+        } else {
+            $this->view('authentification/login');
+        }
     }
 
     public function loginPost(): void
@@ -57,8 +71,13 @@ class UserController extends Controller
             return;
         }
 
-        $user = (new User($this->connectDB()))->getByUsername($_POST['username']);
-
+        $user = (new User($this->connectDB()))->getByUsername(
+            htmlspecialchars(
+                $_POST['username'],
+                ENT_SUBSTITUTE | ENT_HTML401
+            )
+        );
+        
         if (password_verify($_POST['password'], $user->password)) {
             $_SESSION['isAdmin'] = (int) $user->is_admin;
             $_SESSION['user_id'] = (int) $user->id;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Premier Blog</title>
-    <link rel="icon" href="../../public/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/my-first-blog/public/favicon.ico" type="image/x-icon">
     <!-- CSS de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 

@@ -25,7 +25,8 @@ class Validator
                             $this->min($name, $this->data[$name], $rule);
                             break;
                         case 'confirmation':
-                            $this->confirmation($name, $this->data[$name], $this->data[str_replace("-conf", "", $name)]);
+                            $this->confirmation($name, $this->data[$name], 
+                            $this->data[str_replace("-conf", "", $name)]);
                             break;
                     }
                 }
